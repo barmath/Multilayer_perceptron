@@ -1,9 +1,10 @@
+
+# Importações de outras classes e bibliotecas
 from Csv_maneger import Csv_maneger
 from Activation_functions_lib import sigmoid
 from Mlp import Mlp
 
 import numpy as np
-from numpy import int64
 
 class Usage(object):
     """Classe usage fonece condicoes minimas para que Mlp seja instanciada
@@ -14,7 +15,7 @@ class Usage(object):
 
     def __init__(self, alpha, activation_function, hidden_layer_length, input_length, output_length):
         """Construtor padrao e responsavel por criar as 
-           condicoes minimas para treinar, e prever com base em dados .
+           condicoes minimas para treinar, e prever com base em dados.
 
            Deve ser passado como parametro argumetos para que em um primeiro momento
            A MLP seja instanciada
@@ -163,6 +164,8 @@ class Usage(object):
 
 u = Usage(0.1, sigmoid, 2, 63, 7)
 u.data_training('caracteres-limpo2.csv')
+print("Predicoes para caracteres-limpo2.csv")
+u.predict('caracteres-limpo2.csv')
 print("Predicoes para caracteres-ruido2.csv")
 u.predict('caracteres-ruido2.csv')
 print("Predicoes para caracteres-ruido22.csv")

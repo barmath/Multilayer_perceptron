@@ -1,34 +1,38 @@
+
+# Importação de biblioteca
 import csv
 
-## TODO
-## add a method to convert 0 into 1
-
 class Csv_maneger:
-	"""Read a CSV file and store it in to a array.
+	"""Lê um arquivo CSV e o guarda em um vetor.
 
-    This class open store and read a CSV file return a array of all the lines.
+	   Essa classe abre, guarda e lê um arquivo CSV retornando um vetor de todas as linhas.
     """
 	def read_csv(name_of_file):
-		"""Reads, opens and format the CSV file.
+		"""Lê, abre e formata um arquivo CSV.
     
-        It basically check if the name is not empty ;
-		Then open and traverse to all teh lines of the CSV file ;
-		and stores it in a array.
+		Basicamente checa se o arquivo não está vazio;
+		Após isso, abre e passa por todas as linhas do arquivo CSV;
+		e os guarda num vetor.
 
         Args:
-            String with the name of the file to open.
+            name_of_file: String com o nome do arquivo a ser aberto.
 
         Returns:
-            A list of list of integers with all the data in the requested file.
+			name_of_file: Uma lista de inteiros com todos os datos do arquivo requerido.
         """
+
+		# Verifica se o arquivo está vazio
 		if name_of_file is None or len(name_of_file) == 0:
 			return []
 
+		# Cria um vetor para converter o arquivo CSV em um vetor
 		converted = []
 
+		# Converte o arquivo CSV em um vetor
 		with open(name_of_file) as csv_file:
 			csv_reader = csv.reader(csv_file, delimiter = ',')
 			for row in csv_reader:
 				converted.append(row)
 
+		# Retorna o vetor com os dados do arquivo CSV
 		return converted
