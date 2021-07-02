@@ -76,6 +76,40 @@ class Mlp(object):
         #for row in output_layer_out:
         print(np.round_(output_layer_out))
     
+    def fit_demo(self, x, t, threshold = 0.1):
+        squaredError = 2 * threshold
+        counter = 0
+
+        while (squaredError > threshold):
+            squaredError = 0
+            for index in range(len(x)):
+                # pegando uma linha do dataset 
+                Xp = x[index]
+                # pegando o que desejo obter, pelo label 
+                Yp = t[index]
+
+                # Chama forward
+                results = self.feed_forward(Xp)
+
+                # Valor obtido
+                Op = results
+
+                # Calculando o erro 
+                error =  np.subtract( Yp, Op )
+
+                squaredError = squaredError + np.sum( np.power(error, 2) )
+
+                self.backpropagation(Yp, Op, Xp)
+
+
+            squaredError = squaredError / len(x)
+
+            print("Erro medio quadrado : ", squaredError)
+            counter += 1
+
+        print("Iteracoes necessarias : ",counter)
+        print(f"Pesos de entrada para a camada escondida após o: {self.hidden_layer_weight}")
+        print(f"Pesos de entrada para a camada de saída após o treinamento: {self.output_layer_weight}")
 
     def fit(self, x, t, max_epochs=float('inf'), max_error=0.5):
         '''

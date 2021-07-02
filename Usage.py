@@ -24,7 +24,9 @@ class Usage(object):
         self.training_inputs = np.array(self.training_inputs)
         self.labels = np.array(self.labels)
         # TODO Chamar backpropagation 
-        self.Mlp_instance.fit(self.training_inputs, self.labels, max_epochs= 1000000,max_error=0.1)
+        #self.Mlp_instance.fit(self.training_inputs, self.labels, max_epochs= 1000000,max_error=0.1)
+        # chamando backpropagation demo
+        self.Mlp_instance.fit_demo(self.training_inputs, self.labels)
 	
     def convert_negative_to_zero(self, training_inputs):
 
@@ -82,4 +84,7 @@ class Usage(object):
 
 u = Usage(0.1, sigmoid, 2, 63, 7)
 u.data_training('caracteres-limpo2.csv')
-u.predict('caracteres-limpo2.csv')
+print("Predicoes para caracteres-ruido2.csv")
+u.predict('caracteres-ruido2.csv')
+print("Predicoes para caracteres-ruido22.csv")
+u.predict('caracteres-ruido22.csv')
