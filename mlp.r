@@ -22,9 +22,6 @@ mlp.architecture <- function(input.length = 2,
 
 	# inicializando camada escondida inicializada
 	# com numeros aleatorios com base nos tamanhos passados
-
-	# inicializando camada escondida inicializada
-	# com numeros aleatorios com base nos tamanhos passados
 	#
 	# hidden = tamanho da camada escondida * tamanho camada de entrada + 1 (representa theta)
 	# nrow = tamanho camada de escondida 
@@ -54,9 +51,6 @@ mlp.architecture <- function(input.length = 2,
 
 mlp.forward <- function(model, Xp){
 	# Hidden layer
-	# multiplica todas entradas pelos pesos
-	# resultando no net_h_p
-	# na sequencia aplica a funcao de ativacao
 	net_h_p = model$hidden %*% c(Xp,1)
 	f_net_h_p = model$f(net_h_p)
 
@@ -70,7 +64,7 @@ mlp.forward <- function(model, Xp){
 	ret$net_h_p = net_h_p
 	ret$net_o_p = net_o_p
 	ret$f_net_h_p = f_net_h_p
-	ret$f_net_o_p = f_net_o_p
+	ret$f_net_o_p = f_net_o_p 
 
 	return (ret)
 
