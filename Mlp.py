@@ -12,6 +12,7 @@
 # Importações de bibliotecas
 import random
 import numpy as np
+import matplotlib.pyplot as plt
 
 class Mlp(object):
     """Classe utilizada para as definir as funcoes basicas do Multilayer Perceptron
@@ -26,7 +27,7 @@ class Mlp(object):
 
             Args:
                 alpha : Float passado para representar o alpha que e 
-                usado na hora do backpropagation 
+                usado na hora do backpropagation (taxa de aprendizado)
 
                 activation_function : Funcao que e usada no backpropagation 
 
@@ -155,8 +156,6 @@ class Mlp(object):
 
                 #Chama feedfoward
                 y = self.feed_forward(x[index])
-
-                #ENTENDEEEEEEEEEEEEEEEEEEEEER!!!!
                 
                 erro = np.linalg.norm(t[index] - y)
                 erros[index] = erro
@@ -177,8 +176,12 @@ class Mlp(object):
         print(f"erro_medio: {erro_medio}")
         
         # Printa os pesos atribuidos às camadas.
-        print(f"Pesos de entrada para a camada escondida após o: {self.hidden_layer_weight}")
-        print(f"Pesos de entrada para a camada de saída após o treinamento: {self.output_layer_weight}")
+        print(f"Pesos de entrada para a camada escondida apos o: {self.hidden_layer_weight}")
+        print(f"Pesos de entrada para a camada de saida apos o treinamento: {self.output_layer_weight}")
+
+        # printa gráfico dos erros médios
+        plt.plot(erros_medios)
+        plt.show()
 
     def backpropagation(self, labels, output_layer_out, data):
         """Realiza a retropropagação do erro na rede neural.
@@ -240,6 +243,10 @@ class Mlp(object):
     def fit_demo(self, x, t, threshold = 0.1):
         squaredError = 2 * threshold
         counter = 0
+        grafico = []
+        erroFile = open("saida/erro-medio-quadrado.txt", "w")
+        pesosEntradaFile = open("saida/pesos-iniciais.txt", "w")
+        pesosSaidaFile = open("saida/pesos-finais.txt", "w")
 
         while (squaredError > threshold):
             squaredError = 0
@@ -265,14 +272,21 @@ class Mlp(object):
 
             squaredError = squaredError / len(x)
 
-            print("Erro medio quadrado : ", squaredError)
+            erroFile.write(f"Erro medio quadrado: {squaredError}\n")
             counter += 1
+            grafico.append(squaredError)
 
-        print("Iteracoes necessarias : ",counter)
-        print(f"Pesos de entrada para a camada escondida após o: {self.hidden_layer_weight}")
-        print(f"Pesos de entrada para a camada de saída após o treinamento: {self.output_layer_weight}")
+        erroFile.write(f"Iteracoes necessarias: {counter}")
+        erroFile.close()
+        pesosEntradaFile.write(f"Pesos de entrada para a camada escondida apos o: \n{self.hidden_layer_weight}")
+        pesosEntradaFile.close()
+        pesosSaidaFile.write(f"Pesos de entrada para a camada de saída apos o treinamento: \n{self.output_layer_weight}")
+        pesosSaidaFile.close()
+        # printa gráfico dos erros médios
+        plt.plot(grafico)
+        plt.savefig('saida/grafico.png')
 
-    def predict(self, data):
+    def predict(self, data, name_of_file):
         """Realiza a predição dos resultados.
     
            Mostra a saída da predição dos resultados feitos pelo algortitmo
@@ -283,8 +297,14 @@ class Mlp(object):
                data : Vetor que representa os valores dos neurônios de entrada
            
         """
+        predicoes = open(f"saida/predicoes-{name_of_file}.txt", "w")
         # Aplica o feedfoward nos neurônios de entrada
         output_layer_out = self.feed_forward(data)
 
+        # Escreve o tamanho do test label
+        len_test_data = len(data)
+        predicoes.write(f"test labels: {len_test_data}\n")
+
         # Mostra a saída do resultado
-        print(np.round_(output_layer_out))
+        predicoes.write(str(np.round_(output_layer_out)))
+        predicoes.close()

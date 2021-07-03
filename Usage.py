@@ -32,6 +32,10 @@ class Usage(object):
             input_length : Integer que representa tamanho da entrada
             output_length : Integer que representa tamanho da saida
         """
+        parametersFile = open("saida/parametros.txt", "w")
+        parametersFile.write(f"Alpha: {alpha}\nFuncao de ativacao: sigmoid\nComprimento da camada escondida: {hidden_layer_length}\nComprimento da entrada: {input_length}\nComprimento da saida: {output_length}")
+        parametersFile.close()
+
         self.output_length = output_length
         self.Mlp_instance = Mlp(alpha, activation_function, hidden_layer_length, input_length, output_length)
     
@@ -156,9 +160,7 @@ class Usage(object):
 
         test_data = np.array(test_data)
         test_labels = np.array(test_labels)
-        print("test labels")
-        print(len(test_data))
-        self.Mlp_instance.predict(test_data)
+        self.Mlp_instance.predict(test_data, name_of_file)
         
 
 

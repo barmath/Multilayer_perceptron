@@ -2,6 +2,10 @@
 # Importações de bibliotecas
 import numpy as np
 
+
+# Função Sigmoid. É a função mais comum para uso em redes neurais,
+# tendo um balanço entre um comportamento linear e não-linear.
+# Também tem como característica ser derivável em todos os seus pontos.
 def sigmoid(x):
     """Criação da função sigmoide: f(x) = 1/ 1 + exp(-x).
     
