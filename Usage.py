@@ -164,11 +164,11 @@ class Usage(object):
         
 
 
-u = Usage(0.1, sigmoid, 2, 63, 7)
-u.data_training('caracteres-limpo2.csv')
-print("Predicoes para caracteres-limpo2.csv")
-u.predict('caracteres-limpo2.csv')
-print("Predicoes para caracteres-ruido2.csv")
-u.predict('caracteres-ruido2.csv')
-print("Predicoes para caracteres-ruido22.csv")
-u.predict('caracteres-ruido22.csv')
+u = Usage(0.1, sigmoid, 1, 63, 7)
+u.data_training('caracteres-limpo.csv')
+print("Predicoes para caracteres-limpo.csv")
+u.predict('caracteres-limpo.csv')
+print("Predicoes para caracteres-ruido.csv")
+u.predict('caracteres_ruido.csv')
+print("Predicoes para caracteres_ruido20.csv")
+u.predict('caracteres_ruido20.csv')
