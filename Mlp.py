@@ -13,6 +13,7 @@
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, classification_report
 
 class Mlp(object):
     """Classe utilizada para as definir as funcoes basicas do Multilayer Perceptron
@@ -286,7 +287,7 @@ class Mlp(object):
         plt.plot(grafico)
         plt.savefig('saida/grafico.png')
 
-    def predict(self, data, name_of_file):
+    def predict(self, data, name_of_file, y_true):
         """Realiza a predição dos resultados.
     
            Mostra a saída da predição dos resultados feitos pelo algortitmo
@@ -300,6 +301,7 @@ class Mlp(object):
         predicoes = open(f"saida/predicoes-{name_of_file}.txt", "w")
         # Aplica o feedfoward nos neurônios de entrada
         output_layer_out = self.feed_forward(data)
+        y_pred = np.round_(output_layer_out)
 
         # Escreve o tamanho do test label
         len_test_data = len(data)
@@ -307,4 +309,12 @@ class Mlp(object):
 
         # Mostra a saída do resultado
         predicoes.write(str(np.round_(output_layer_out)))
+
+        predicoes.write("\n\nMatrix de confusao:\n")
+        predicoes.write(str(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))))
+
+        predicoes.write("\n\nRelatorio de classificacao:\n")
+        target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
+        predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names)))
+
         predicoes.close()
