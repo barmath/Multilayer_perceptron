@@ -70,7 +70,7 @@ class Usage(object):
         # Terceira parte 
         #self.Mlp_instance.fit(self.training_inputs, self.labels, max_epochs= 1000000,max_error=0.1)
         # chamando backpropagation demo
-        self.Mlp_instance.fit_demo(self.training_inputs, self.labels)
+        self.Mlp_instance.fit(self.training_inputs, self.labels)
 	
     def convert_negative_to_zero(self, training_inputs):
         """Utilizada para converter valores negativos em 0.
@@ -162,12 +162,13 @@ class Usage(object):
         self.Mlp_instance.predict(test_data, name_of_file, test_labels)
 
 
-
+#TODO: Colocar 1 camada escondida e colocar os arquivos csv corretos.
 u = Usage(0.1, sigmoid, 2, 63, 7)
-u.data_training('caracteres-limpo2.csv')
-print("Predicoes para caracteres-limpo2.csv")
-u.predict('caracteres-limpo2.csv')
+u.data_training('caracteres-limpo.csv')
+print("Predicoes para caracteres-limpo.csv")
+u.predict('caracteres-limpo.csv')
 print("Predicoes para caracteres-ruido2.csv")
 u.predict('caracteres-ruido2.csv')
 print("Predicoes para caracteres-ruido22.csv")
 u.predict('caracteres-ruido22.csv')
+

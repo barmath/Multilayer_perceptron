@@ -213,6 +213,8 @@ class Mlp(object):
 
             squaredError = squaredError / len(x)
 
+            print("Erro ao quadrado : ", squaredError)
+
             erroFile.write(f"Erro medio quadrado: {squaredError}\n")
             counter += 1
             grafico.append(squaredError)
