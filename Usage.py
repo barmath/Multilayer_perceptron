@@ -1,21 +1,20 @@
-
 # Importações de outras classes e bibliotecas
 from Csv_maneger import Csv_maneger
 from Activation_functions_lib import sigmoid
 from Mlp import Mlp
-
 import numpy as np
 
+
 class Usage(object):
-    """Classe usage fonece condicoes minimas para que Mlp seja instanciada
-       bem como funcoes que ajudam a organizacao dos dados e mostragem de re-
+    """Classe Usage fonece condições mínimas para que a Mlp seja instanciada,
+       bem como as funções que ajudam a organização dos dados e mostragem de re-
        sultados 
     
     """
 
     def __init__(self, alpha, activation_function, hidden_layer_length, input_length, output_length):
-        """Construtor padrao e responsavel por criar as 
-           condicoes minimas para treinar, e prever com base em dados.
+        """Construtor padrão e responsável por criar as 
+           condições mínimas para treinar e prever com base em dados.
 
            Deve ser passado como parametro argumetos para que em um primeiro momento
            A MLP seja instanciada

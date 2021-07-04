@@ -29,7 +29,7 @@ class Csv_maneger:
 		converted = []
 
 		# Converte o arquivo CSV em um vetor
-		with open(name_of_file) as csv_file:
+		with open(name_of_file, encoding='utf-8-sig') as csv_file:
 			csv_reader = csv.reader(csv_file, delimiter = ',')
 			for row in csv_reader:
 				converted.append(row)

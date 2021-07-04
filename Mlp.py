@@ -1,30 +1,20 @@
-'''
-# z_in (hidden_layer_in)
-# z (hidden_layer_out)
-# w0 (output_layer_bias)
-# w (output_layer_weight)
-# v0 (hidden_layer_bias)
-# v  (hidden_layer_weight)
-# y_in (output_layer_in) = valores vindos dos neuronios da camada escondida
-# y (output_layer_out) = valor de y_in com a função de ativação
-'''
-
 # Importações de bibliotecas
 import random
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 
+
 class Mlp(object):
-    """Classe utilizada para as definir as funcoes basicas do Multilayer Perceptron
+    """Classe utilizada para as definir as funções básicas do Multilayer Perceptron
        
     """
     def __init__(self, alpha, activation_function, hidden_layer_length, input_length, output_length):
-        """Contrutor padrao que instacia o MlP.
+        """Contrutor padrão que instacia o MlP.
     
-            Recebe condicoes inicial para instaciar a Multilayes perceptron
-            Seta variaveis globais e chama funcoes para setar condicoes 
-            basicas de pesos e biases 
+            Recebe condições iniciais para instaciar a Multilayer perceptron
+            Defini variáveis globais e chama funções para definir condições 
+            básicas de pesos e biases 
 
             Args:
                 alpha : Float passado para representar o alpha que e 
@@ -36,6 +26,7 @@ class Mlp(object):
                                     escondida
 
                 input_length : Integer que representa tamanho da entrada
+
                 output_length : Integer que representa tamanho da saida
 
         """
@@ -55,12 +46,12 @@ class Mlp(object):
         self.set_biases()
 
     def setup_hidden_layer(self):
-        """Define condicoes iniciais da camada escondida.
+        """Define condições iniciais da camada escondida.
     
-           Cria vetores que representarao os pesos para camada escondida
-           com a utilizacao da funcoes auxiliaries do numpy
-           np.random define valores aleatorios
-           reshape cria matriz com as dimencoes dadas
+           Cria vetores que representarão os pesos para camada escondida
+           com a utilizacao da funcoes auxiliares do numpy
+           np.random: define valores aleatorios
+           reshape: cria matriz com as dimencoes dadas
 
         """
 
@@ -72,13 +63,13 @@ class Mlp(object):
         self.hidden_layer_out = np.empty(self.hidden_layer_length)
 
     def setup_output_layer(self):
-        """Define condicoes iniciais da camada de saida.
+        """Define condições iniciais da camada de saída.
     
-           Cria vetores que representarao os pesos para camada escondida
-           com a utilizacao da funcoes auxiliaries do numpy
-           np.random define valores aleatorios
-           reshape cria matriz com as dimencoes dadas
-           empty cria um valor vazio
+           Cria vetores que representarão os pesos para camada escondida
+           com a utilização da funções auxiliares do numpy
+           np.random: define valores aleatorios
+           reshape: cria matriz com as dimencoes dadas
+           empty: cria um vetor vazio
 
         """
 
@@ -90,9 +81,10 @@ class Mlp(object):
     def set_biases(self):
         """Define os bias da camada escondida e de saída.
     
-           Cria vetores que representarao os bias para camada escondida
-           com a utilizacao da funcoes auxiliaries do numpy
-           np.random define valores aleatorios e random valores float de [0.0,1.0)
+           Cria vetores que representarão os bias para camada escondida
+           com a utilização da funções auxiliares do numpy
+           np.random: cria um vetor com valores aleatórios
+           random: valores float de [0.0,1.0)
 
         """
         
@@ -106,10 +98,10 @@ class Mlp(object):
     
            Computa e calcula os pesos de cada neurônio da camada escondida e de saída
            com a utilizacao da funcoes auxiliaries do numpy
-           np.matmul que realiza multiplicação de matrizes
+           np.matmul: realiza multiplicação de matrizes
 
            Args:
-               data : Vetor que representa os valores dos neurônios de entrada
+               data: Vetor que representa os valores dos neurônios de entrada
            
            Returns:
                   output_layer_out: Vetor que representa os valores dos neurônios de saídas após a aplicação da função de ativação
@@ -132,74 +124,22 @@ class Mlp(object):
 
         return output_layer_out
     
-    #TODO : APAGAR
-    def fit(self, x, t, max_epochs=float('inf'), max_error=0.5):
-        '''
-            x -> data
-            t -> saída esperada
-            trheshold -> limiar de comparação de erro para saída do laço
-        '''
-        epoch = 0
-        erro_medio = float('inf')
-        # lista com os erros totais médios para cada época
-        erros_medios = []
-
-        while erro_medio > max_error and epoch < max_epochs:
-            epoch += 1
-
-            squared_error = 0 
-            if epoch % 100 == 0:
-                print(f"epoch: {epoch}")
-            #erros = [0 for x in range(len(x))]
-            erros = np.zeros(len(x))
-
-            for index in range(len(x)): 
-
-                #Chama feedfoward
-                y = self.feed_forward(x[index])
-                
-                erro = np.linalg.norm(t[index] - y)
-                erros[index] = erro
-
-                #squared_error = squared_error + sum(pow(erros[index],2))
-
-                #Chama backpropagation
-                self.backpropagation(t[index], y, x[index])
-            
-                #squared_error = squared_error/ len(x)
-
-            #Calcula erro médio
-            erro_medio = erros.mean()
-            erros_medios.append(erro_medio)
-
-        print(f"epochs: {epoch}")
-        # Printa o erro médio após fim do aprendizado.
-        print(f"erro_medio: {erro_medio}")
-        
-        # Printa os pesos atribuidos às camadas.
-        print(f"Pesos de entrada para a camada escondida apos o: {self.hidden_layer_weight}")
-        print(f"Pesos de entrada para a camada de saida apos o treinamento: {self.output_layer_weight}")
-
-        # printa gráfico dos erros médios
-        plt.plot(erros_medios)
-        plt.show()
-
     def backpropagation(self, labels, output_layer_out, data):
         """Realiza a retropropagação do erro na rede neural.
     
         Calula as correções dos pesos dos neurônios e aplica a retropropagação do erro 
         através de diversas equações a fim de gerar um melhor desempenho no aprendizado.
         Utilizamos funções auxiliares do numpy
-        np.matmul que realiza multiplicação de matrizes
-        reshape cria matriz com as dimencoes dadas
+        np.matmul: realiza multiplicação de matrizes
+        reshape: cria matriz com as dimenções dadas
             
         Args:
-            labels : Vetor passado para representar as saídas esperadas
+            labels: Vetor passado para representar as saídas esperadas
 
-            output_layer_out :  Vetor que representa as saídas dos neurônios 
+            output_layer_out:  Vetor que representa as saídas dos neurônios 
             da camada de saída com a função de ativação 
 
-            data : Vetor que representa os valores dos neurônios de entrada
+            data: Vetor que representa os valores dos neurônios de entrada
 
         """
         
@@ -241,7 +181,7 @@ class Mlp(object):
         self.hidden_layer_bias = self.hidden_layer_bias + delta_hidden_layer_bias
         self.hidden_layer_weight = self.hidden_layer_weight + delta_hidden_layer_weight
 
-    def fit_demo(self, x, t, threshold = 0.1):
+    def fit(self, x, t, threshold = 0.1):
         squaredError = 2 * threshold
         counter = 0
         grafico = []
@@ -290,22 +230,28 @@ class Mlp(object):
     def predict(self, data, name_of_file, y_true):
         """Realiza a predição dos resultados.
     
-           Mostra a saída da predição dos resultados feitos pelo algortitmo
-           com a utilizacao da funcoes auxiliaries do numpy
-           np.round_ cria um vetor com decimais
+           Mostra a saída da predição dos resultados feitos pelo algoritmo
+           com a utilizacao da funcoes auxiliaries do numpy, e criação de txt para apresentação
+           dos resultados
+           np.round_: cria um vetor com decimais
 
            Args:
                data : Vetor que representa os valores dos neurônios de entrada
+
+               name_of_file: Nome do arquivo a ser lido
+
+               y_true: Respostas esperadas para matriz de confusão
            
         """
-        predicoes = open(f"saida/predicoes-{name_of_file}.txt", "w")
+        predicoes = open(f"Saida/predicoes-{name_of_file}.txt", "w")
+
         # Aplica o feedfoward nos neurônios de entrada
         output_layer_out = self.feed_forward(data)
         y_pred = np.round_(output_layer_out)
 
         # Escreve o tamanho do test label
         len_test_data = len(data)
-        predicoes.write(f"test labels: {len_test_data}\n")
+        predicoes.write(f"Test labels: {len_test_data}\n")
 
         # Mostra a saída do resultado
         predicoes.write(str(np.round_(output_layer_out)))
