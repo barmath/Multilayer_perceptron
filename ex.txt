@@ -1,0 +1,702 @@
+Erro ao quadrado :  3.672446395868873
+Erro ao quadrado :  2.6539816859781182
+Erro ao quadrado :  1.8004444325307805
+Erro ao quadrado :  1.3165180065989477
+Erro ao quadrado :  1.0946691960964965
+Erro ao quadrado :  0.9939176336011076
+Predicoes para caracteres-limpo.csv
+  **   
+   *   
+   *   
+  * *  
+  * *  
+ ***** 
+ *   * 
+ *   * 
+*** ***
+
+label : A ,predictions : 
+****** 
+ *    *
+ *    *
+ *    *
+ ***** 
+ *    *
+ *    *
+ *    *
+****** 
+
+label : B ,predictions : 
+  *****
+ *    *
+*      
+*      
+*      
+*      
+*      
+ *    *
+  **** 
+
+label : C ,predictions : 
+*****  
+ *   * 
+ *    *
+ *    *
+ *    *
+ *    *
+ *    *
+ *   * 
+*****  
+
+label : D ,predictions : 
+*******
+ *    *
+ *     
+ * *   
+ ***   
+ * *   
+ *     
+ *    *
+*******
+
+label : E ,predictions : 
+   ****
+     * 
+     * 
+     * 
+     * 
+     * 
+ *   * 
+ *   * 
+  ***  
+
+label : J ,predictions : 
+***  **
+ *  *  
+ * *   
+ **    
+ **    
+ * *   
+ *  *  
+ *   * 
+***  **
+
+label : K ,predictions : 
+   *   
+   *   
+   *   
+  * *  
+  * *  
+ *   * 
+ ***** 
+ *   * 
+ *   * 
+
+label : A ,predictions : 
+****** 
+*     *
+*     *
+*     *
+****** 
+*     *
+*     *
+*     *
+****** 
+
+label : B ,predictions : 
+  ***  
+ *   * 
+*     *
+*      
+*      
+*      
+*     *
+ *   * 
+  ***  
+
+label : C ,predictions : 
+*****  
+*    * 
+*     *
+*     *
+*     *
+*     *
+*     *
+*    * 
+*****  
+
+label : D ,predictions : 
+*******
+*      
+*      
+*      
+*****  
+*      
+*      
+*      
+*******
+
+label : E ,predictions : 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+ *   * 
+ *   * 
+  ***  
+
+label : J ,predictions : 
+*    * 
+*   *  
+*  *   
+* *    
+**     
+* *    
+*  *   
+*   *  
+*    * 
+
+label : K ,predictions : 
+   *   
+   *   
+  * *  
+  * *  
+ *   * 
+ ***** 
+*     *
+*     *
+**   **
+
+label : A ,predictions : 
+****** 
+ *    *
+ *    *
+ ***** 
+ *    *
+ *    *
+ *    *
+ *    *
+****** 
+
+label : B ,predictions : 
+  *** *
+ *   **
+*     *
+*      
+*      
+*      
+*     *
+ *   * 
+  ***  
+
+label : C ,predictions : 
+*****  
+ *   * 
+ *    *
+ *    *
+ *    *
+ *    *
+ *    *
+ *   * 
+*****  
+
+label : D ,predictions : 
+*******
+ *    *
+ *  *  
+ ****  
+ *  *  
+ *     
+ *     
+ *    *
+*******
+
+label : E ,predictions : 
+    ***
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+ *   * 
+  ***  
+
+label : J ,predictions : 
+***  **
+ *   * 
+ *  *  
+ * *   
+ **    
+ * *   
+ *  *  
+ *   * 
+***  **
+
+label : K ,predictions : 
+Predicoes para caracteres-ruido.csv
+  **   
+  **   
+   *   
+  * ** 
+  * *  
+ ***** 
+ * * * 
+ *   * 
+* * * *
+
+label : A ,predictions : 
+****** 
+      *
+ *    *
+ **   *
+ ***** 
+ * *  *
+ **   *
+ *    *
+****** 
+
+label : B ,predictions : 
+  *****
+**  * *
+*      
+**     
+       
+*      
+*      
+ *  * *
+  **** 
+
+label : C ,predictions : 
+*****  
+ * * * 
+ *     
+ **   *
+ *     
+ *    *
+ *    *
+ **  * 
+*****  
+
+label : D ,predictions : 
+** ****
+ *    *
+ *     
+ * *   
+ * **  
+ * *   
+ *     
+**    *
+*******
+
+label : E ,predictions : 
+   ** *
+     * 
+     * 
+     * 
+     * 
+       
+ *   * 
+    ** 
+  ***  
+
+label : J ,predictions : 
+* * ***
+ *  *  
+ * *   
+ **    
+ **    
+ * *   
+ *  ** 
+ **  * 
+**   **
+
+label : K ,predictions : 
+   *   
+       
+   *   
+  * *  
+  *    
+ *   * 
+ *** * 
+*      
+*   * *
+
+label : A ,predictions : 
+****** 
+*     *
+      *
+*     *
+ ** ** 
+*     *
+*     *
+*  *   
+****** 
+
+label : B ,predictions : 
+  ***  
+ *   * 
+*     *
+*      
+** * * 
+*      
+*      
+ *     
+  ***  
+
+label : C ,predictions : 
+ ****  
+*    * 
+*     *
+*     *
+***   *
+*     *
+      *
+*    * 
+ ****  
+
+label : D ,predictions : 
+ ******
+*      
+*      
+*      
+ ****  
+*      
+* *    
+* *    
+ ******
+
+label : E ,predictions : 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+*    * 
+*  **  
+
+label : J ,predictions : 
+       
+*   *  
+*  *   
+* *    
+ *     
+* *    
+*  *   
+*   *  
+       
+
+label : K ,predictions : 
+   *   
+   *   
+  * *  
+  * *  
+ *   * 
+  * *  
+*     *
+*     *
+**** **
+
+label : A ,predictions : 
+****** 
+**    *
+ *    *
+ ***** 
+**    *
+ *    *
+**     
+ *    *
+****** 
+
+label : B ,predictions : 
+  *** *
+ *   **
+*     *
+*      
+*     *
+       
+*     *
+ *   * 
+   **  
+
+label : C ,predictions : 
+*****  
+ *   * 
+ *    *
+ *    *
+ ***   
+ *    *
+ *     
+ * * * 
+*****  
+
+label : D ,predictions : 
+*******
+ *    *
+ *  *  
+* **   
+ *  *  
+ *     
+ *     
+ *    *
+ ** ***
+
+label : E ,predictions : 
+    ***
+     * 
+     **
+     * 
+       
+     * 
+     * 
+ *     
+  ***  
+
+label : J ,predictions : 
+ **  * 
+ *   * 
+ *  *  
+ *     
+ **    
+ * *   
+ *  *  
+ *     
+ **  **
+
+label : K ,predictions : 
+Predicoes para caracteres_ruido20.csv
+  **  *
+   *   
+   * **
+  * *  
+*   *  
+ ***** 
+ *   * 
+ *  ** 
+*******
+
+label : A ,predictions : 
+* **** 
+ *   **
+ *   **
+ * *  *
+* **** 
+ *    *
+ * *  *
+ *     
+  **** 
+
+label : B ,predictions : 
+  *****
+ **   *
+* **   
+*   *  
+*    * 
+*      
+*      
+ *    *
+  **** 
+
+label : C ,predictions : 
+*****  
+ *   * 
+ * * **
+ *  * *
+ *    *
+ *    *
+ *   **
+ *     
+ ****  
+
+label : D ,predictions : 
+*******
+      *
+ *   * 
+ * *   
+ ***  *
+ * *   
+ *     
+** * **
+***** *
+
+label : E ,predictions : 
+   ****
+       
+  *  * 
+     * 
+     * 
+ *   * 
+ *   * 
+ *   **
+  ***  
+
+label : J ,predictions : 
+*    **
+ *  * *
+ *     
+ **    
+ **   *
+ * * * 
+    *  
+ *   * 
+***  * 
+
+label : K ,predictions : 
+   *  *
+   *  *
+   *   
+  * * *
+  * *  
+ *   * 
+  **** 
+ *   * 
+   * * 
+
+label : A ,predictions : 
+**** * 
+* *   *
+*     *
+ *    *
+****** 
+*     *
+ *    *
+*     *
+  *****
+
+label : B ,predictions : 
+* ***  
+ *   * 
+     **
+* *  * 
+*      
+**  *  
+*     *
+ * * * 
+  ***  
+
+label : C ,predictions : 
+*****  
+*    * 
+*     *
+*    **
+*   * *
+*  *  *
+**    *
+*    * 
+*****  
+
+label : D ,predictions : 
+**  ** 
+*      
+*     *
+*      
+*  **  
+*     *
+* * *  
+*      
+*** ***
+
+label : E ,predictions : 
+     * 
+  *  * 
+ *     
+ *   * 
+  *    
+    ** 
+ *   * 
+ *   * 
+  ***  
+
+label : J ,predictions : 
+*    * 
+** **  
+*  *** 
+* *    
+**     
+* *  * 
+*      
+*   *  
+*    * 
+
+label : K ,predictions : 
+   *   
+   *  *
+  ***  
+ *  *  
+ *   * 
+  **** 
+*     *
+*     *
+**  ** 
+
+label : A ,predictions : 
+ * *** 
+      *
+ *  * *
+ ***** 
+ *    *
+ *  * *
+ *    *
+ *    *
+* **** 
+
+label : B ,predictions : 
+  *** *
+ *   **
+*   *  
+*  *   
+*      
+**     
+*     *
+ *     
+  ***  
+
+label : C ,predictions : 
+ **** *
+ *   * 
+ *     
+ *     
+       
+ *    *
+ *    *
+ *   * 
+*****  
+
+label : D ,predictions : 
+* *****
+ **   *
+ *  *  
+  * *  
+ *  *  
+ *     
+ *     
+ *    *
+*******
+
+label : E ,predictions : 
+    ***
+*    * 
+  ** * 
+  *  * 
+ *     
+     * 
+     * 
+ *   * 
+   **  
+
+label : J ,predictions : 
+**    *
+     * 
+ * **  
+** *   
+***    
+ ***   
+ *  *  
+ *   * 
+***  **
+
+label : K ,predictions : 

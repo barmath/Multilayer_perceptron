@@ -28,30 +28,30 @@ Resultados das predicoes para o dataset:
 Teste 1) 
   Visualizacao dos dados : 
 
-     **   
+     **  *
      *   
-     *   
+     * **
     * *  
-    * *  
+  *   *  
    ***** 
    *   * 
-   *   * 
-  *** ***
+   *  ** 
+  *******
 
  Resultados da predicao : label : A ,predicoes : Nao ha predicoes
 
 Teste 2) 
   Visualizacao dos dados : 
 
-   ****** 
+   * **** 
+   *   **
+   *   **
+   * *  *
+  * **** 
    *    *
-   *    *
-   *    *
-   ***** 
-   *    *
-   *    *
-   *    *
-  ****** 
+   * *  *
+   *     
+    **** 
 
  Resultados da predicao : label : B ,predicoes : Nao ha predicoes
 
@@ -59,10 +59,10 @@ Teste 3)
   Visualizacao dos dados : 
 
      *****
-   *    *
-  *      
-  *      
-  *      
+   **   *
+  * **   
+  *   *  
+  *    * 
   *      
   *      
    *    *
@@ -75,13 +75,13 @@ Teste 4)
 
    *****  
    *   * 
+   * * **
+   *  * *
    *    *
    *    *
-   *    *
-   *    *
-   *    *
-   *   * 
-  *****  
+   *   **
+   *     
+   ****  
 
  Resultados da predicao : label : D ,predicoes : Nao ha predicoes
 
@@ -89,14 +89,14 @@ Teste 5)
   Visualizacao dos dados : 
 
    *******
-   *    *
-   *     
+        *
+   *   * 
    * *   
-   ***   
+   ***  *
    * *   
    *     
-   *    *
-  *******
+  ** * **
+  ***** *
 
  Resultados da predicao : label : E ,predicoes : Nao ha predicoes
 
@@ -104,13 +104,13 @@ Teste 6)
   Visualizacao dos dados : 
 
       ****
-       * 
-       * 
-       * 
+         
+    *  * 
        * 
        * 
    *   * 
    *   * 
+   *   **
     ***  
 
  Resultados da predicao : label : J ,predicoes : Nao ha predicoes
@@ -118,59 +118,59 @@ Teste 6)
 Teste 7) 
   Visualizacao dos dados : 
 
-   ***  **
-   *  *  
-   * *   
+   *    **
+   *  * *
+   *     
    **    
-   **    
-   * *   
-   *  *  
+   **   *
+   * * * 
+      *  
    *   * 
-  ***  **
+  ***  * 
 
  Resultados da predicao : label : K ,predicoes : Nao ha predicoes
 
 Teste 8) 
   Visualizacao dos dados : 
 
-      *   
+      *  *
+     *  *
      *   
-     *   
+    * * *
     * *  
-    * *  
    *   * 
-   ***** 
+    **** 
    *   * 
-   *   * 
+     * * 
 
  Resultados da predicao : label : A ,predicoes : Nao ha predicoes
 
 Teste 9) 
   Visualizacao dos dados : 
 
-   ****** 
+   **** * 
+  * *   *
   *     *
-  *     *
-  *     *
+   *    *
   ****** 
   *     *
+   *    *
   *     *
-  *     *
-  ****** 
+    *****
 
  Resultados da predicao : label : B ,predicoes : Nao ha predicoes
 
 Teste 10) 
   Visualizacao dos dados : 
 
-     ***  
+   * ***  
    *   * 
+       **
+  * *  * 
+  *      
+  **  *  
   *     *
-  *      
-  *      
-  *      
-  *     *
-   *   * 
+   * * * 
     ***  
 
  Resultados da predicao : label : C ,predicoes : Nao ha predicoes
@@ -181,10 +181,10 @@ Teste 11)
    *****  
   *    * 
   *     *
-  *     *
-  *     *
-  *     *
-  *     *
+  *    **
+  *   * *
+  *  *  *
+  **    *
   *    * 
   *****  
 
@@ -193,15 +193,15 @@ Teste 11)
 Teste 12) 
   Visualizacao dos dados : 
 
-   *******
+   **  ** 
   *      
+  *     *
   *      
+  *  **  
+  *     *
+  * * *  
   *      
-  *****  
-  *      
-  *      
-  *      
-  *******
+  *** ***
 
  Resultados da predicao : label : E ,predicoes : Nao ha predicoes
 
@@ -209,11 +209,11 @@ Teste 13)
   Visualizacao dos dados : 
 
         * 
-       * 
-       * 
-       * 
-       * 
-       * 
+    *  * 
+   *     
+   *   * 
+    *    
+      ** 
    *   * 
    *   * 
     ***  
@@ -224,12 +224,12 @@ Teste 14)
   Visualizacao dos dados : 
 
    *    * 
-  *   *  
-  *  *   
+  ** **  
+  *  *** 
   * *    
   **     
-  * *    
-  *  *   
+  * *  * 
+  *      
   *   *  
   *    * 
 
@@ -239,29 +239,29 @@ Teste 15)
   Visualizacao dos dados : 
 
       *   
-     *   
-    * *  
-    * *  
+     *  *
+    ***  
+   *  *  
    *   * 
-   ***** 
+    **** 
   *     *
   *     *
-  **   **
+  **  ** 
 
  Resultados da predicao : label : A ,predicoes : Nao ha predicoes
 
 Teste 16) 
   Visualizacao dos dados : 
 
-   ****** 
-   *    *
-   *    *
+    * *** 
+        *
+   *  * *
    ***** 
    *    *
+   *  * *
    *    *
    *    *
-   *    *
-  ****** 
+  * **** 
 
  Resultados da predicao : label : B ,predicoes : Nao ha predicoes
 
@@ -270,12 +270,12 @@ Teste 17)
 
      *** *
    *   **
+  *   *  
+  *  *   
+  *      
+  **     
   *     *
-  *      
-  *      
-  *      
-  *     *
-   *   * 
+   *     
     ***  
 
  Resultados da predicao : label : C ,predicoes : Nao ha predicoes
@@ -283,11 +283,11 @@ Teste 17)
 Teste 18) 
   Visualizacao dos dados : 
 
-   *****  
+    **** *
    *   * 
-   *    *
-   *    *
-   *    *
+   *     
+   *     
+         
    *    *
    *    *
    *   * 
@@ -298,10 +298,10 @@ Teste 18)
 Teste 19) 
   Visualizacao dos dados : 
 
-   *******
-   *    *
+   * *****
+   **   *
    *  *  
-   ****  
+    * *  
    *  *  
    *     
    *     
@@ -314,26 +314,26 @@ Teste 20)
   Visualizacao dos dados : 
 
        ***
-       * 
-       * 
-       * 
-       * 
+  *    * 
+    ** * 
+    *  * 
+   *     
        * 
        * 
    *   * 
-    ***  
+     **  
 
  Resultados da predicao : label : J ,predicoes : Nao ha predicoes
 
 Teste 21) 
   Visualizacao dos dados : 
 
-   ***  **
-   *   * 
-   *  *  
-   * *   
-   **    
-   * *   
+   **    *
+       * 
+   * **  
+  ** *   
+  ***    
+   ***   
    *  *  
    *   * 
   ***  **

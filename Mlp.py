@@ -1,5 +1,6 @@
 # Importações de bibliotecas
 import random
+import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
@@ -31,7 +32,6 @@ class Mlp(object):
 
         """
         # Seta todas variaveis globais utilizadas pra configurar a MLP
-        
         self.alpha = alpha
         self.hidden_layer_length = hidden_layer_length
         self.activation_function = activation_function
@@ -57,8 +57,10 @@ class Mlp(object):
 
         # Matriz contendo todos pesos 
         self.hidden_layer_weight = np.random.random(self.input_length * self.hidden_layer_length).reshape(self.input_length, self.hidden_layer_length)
+
         # Vetor de entrada da camada escondida com o tamanho dela mesmo
         self.hidden_layer_in = np.empty(self.hidden_layer_length)
+
         # Vetor de saida da camada escondida com o tamanho dela mesmo
         self.hidden_layer_out = np.empty(self.hidden_layer_length)
 
@@ -75,6 +77,7 @@ class Mlp(object):
 
         # Matriz com todos os pesos da camada de saida que tem como peso a
         self.output_layer_weight = np.random.random(self.hidden_layer_length *  self.output_length).reshape(self.hidden_layer_length, self.output_length)
+
         # Matriz com todos os pesos da camada de saida 
         self.output_layer_in = np.empty(self.hidden_layer_length)
 
@@ -87,9 +90,10 @@ class Mlp(object):
            random: valores float de [0.0,1.0)
 
         """
-        
+    
         # Matriz com todos os bias da camada escondida 
         self.hidden_layer_bias = np.random.random(self.hidden_layer_length)
+
         # Matriz com todos os bias da camada de saída
         self.output_layer_bias = np.random.random(self.output_length)
 
@@ -181,21 +185,41 @@ class Mlp(object):
         self.hidden_layer_bias = self.hidden_layer_bias + delta_hidden_layer_bias
         self.hidden_layer_weight = self.hidden_layer_weight + delta_hidden_layer_weight
 
-    def fit(self, x, t, threshold = 0.1):
+    def fit(self, training_dataset, training_dataset_labels, threshold = 1):
+        """Faz o trainamento baseado nos dados de treinamentos e seus labels.
+    
+        Atravez da condicao de parada do erro medio,
+        fazemos o calculo deste e equanto este erro medio nao for maior que
+        o threshold definido rodamos o treinamento chamando o feed forward e 
+        o back propagation para os inputs passados 
+            
+        Args:
+            x : Vetor passado para representar as saídas esperadas
+
+            output_layer_out:  Vetor que representa as saídas dos neurônios 
+            da camada de saída com a função de ativação 
+
+            data: Vetor que representa os valores dos neurônios de entrada
+
+        """
+
         squaredError = 2 * threshold
         counter = 0
         grafico = []
+
+        # Inicializacao dos arquivos para escritas dos parametros de saida e logs
         erroFile = open("saida/erro-medio-quadrado.txt", "w")
         pesosEntradaFile = open("saida/pesos-iniciais.txt", "w")
         pesosSaidaFile = open("saida/pesos-finais.txt", "w")
 
+        # Definicao da condicao de parada para a execucao do back propagation
         while (squaredError > threshold):
             squaredError = 0
-            for index in range(len(x)):
+            for index in range(len(training_dataset)):
                 # pegando uma linha do dataset 
-                Xp = x[index]
+                Xp = training_dataset[index]
                 # pegando o que desejo obter, pelo label 
-                Yp = t[index]
+                Yp = training_dataset_labels[index]
 
                 # Chama forward
                 results = self.feed_forward(Xp)
@@ -205,28 +229,39 @@ class Mlp(object):
 
                 # Calculando o erro 
                 error =  np.subtract( Yp, Op )
-
                 squaredError = squaredError + np.sum( np.power(error, 2) )
 
+                # Chama backpropagation passando resultados do feed_forward (Op), 
+                # resultados passados do dataset (Yp)
+                # e os resultados esperados (Xp)
                 self.backpropagation(Yp, Op, Xp)
 
 
-            squaredError = squaredError / len(x)
+            squaredError = squaredError / len(training_dataset)
 
             print("Erro ao quadrado : ", squaredError)
-
+            # Escrita do erro medio quadrado para monitorar como esta execucao 
             erroFile.write(f"Erro medio quadrado: {squaredError}\n")
+            # Incrementar o numero de epocas 
             counter += 1
+            # Alimenta dados para o grafico
             grafico.append(squaredError)
 
+        # Escreve numero de iteracoes necessarias
         erroFile.write(f"Iteracoes necessarias: {counter}")
         erroFile.close()
+
+        # Escreve Informacoes referentes aos pesos de estrada da camada escondida antes o treinamento
         pesosEntradaFile.write(f"Pesos de entrada para a camada escondida apos o: \n{self.hidden_layer_weight}")
         pesosEntradaFile.close()
+
+        # Escreve Informacoes referentes aos pesos de estrada da camada saída apos o treinamento
         pesosSaidaFile.write(f"Pesos de entrada para a camada de saída apos o treinamento: \n{self.output_layer_weight}")
         pesosSaidaFile.close()
-        # printa gráfico dos erros médios
+
+        # Cria imagem gráfico dos erros médios
         plt.plot(grafico)
+        # Salva imagem gráfico dos erros médios
         plt.savefig('saida/grafico.png')
 
     def predict(self, data, name_of_file, y_true):
@@ -245,24 +280,9 @@ class Mlp(object):
                y_true: Respostas esperadas para matriz de confusão
            
         """
-        predicoes = open(f"Saida/predicoes-{name_of_file}.txt", "w")
+        #predicoes = open(f"Saida/predicoes-{name_of_file}.txt", "w")
 
         # Aplica o feedfoward nos neurônios de entrada
         output_layer_out = self.feed_forward(data)
-        y_pred = np.round_(output_layer_out)
 
-        # Escreve o tamanho do test label
-        len_test_data = len(data)
-        predicoes.write(f"Test labels: {len_test_data}\n")
-
-        # Mostra a saída do resultado
-        predicoes.write(str(np.round_(output_layer_out)))
-
-        predicoes.write("\n\nMatrix de confusao:\n")
-        predicoes.write(str(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))))
-
-        predicoes.write("\n\nRelatorio de classificacao:\n")
-        target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
-        predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names)))
-
-        predicoes.close()
+        return output_layer_out

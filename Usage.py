@@ -1,9 +1,12 @@
 # Importações de outras classes e bibliotecas
 from Csv_maneger import Csv_maneger
 from Activation_functions_lib import sigmoid
+from characterPrint import characterPrint
 from Mlp import Mlp
 import numpy as np
-
+import datetime
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, classification_report
 
 class Usage(object):
     """Classe Usage fonece condições mínimas para que a Mlp seja instanciada,
@@ -154,21 +157,116 @@ class Usage(object):
         for i in range(len(training_data)):
             training_inputs[i] = training_data[i][0:-self.output_length] 
             labels[i] = training_data[i][-self.output_length:]
-        
         test_data, test_labels = self.data_organizer(name_of_file)
+        self.all_result_string = ""
 
+        # Converte arrays de numpy para arranjo normais
         test_data = np.array(test_data)
         test_labels = np.array(test_labels)
-        self.Mlp_instance.predict(test_data, name_of_file, test_labels)
+
+        # Faz a predicao dos dados 
+        result = self.Mlp_instance.predict(test_data, name_of_file, test_labels)
+        self.predictionOutputFormater(result, test_data, name_of_file, test_labels)
+
+        # Inicia arquivo para escrever
+        self.predicoes = open(f"Saida/predicoes-{name_of_file}.txt", "w")
+
+        # Escreve o data do teste hora que o teste foi feito
+        timeStamp = 'Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        self.predicoes.write(f"Data de criacao : {timeStamp}\n")
+
+        # Escreve o tamanho do test label
+        len_test_data = len(test_data)
+        self.predicoes.write(f"\nLabels testados : {len_test_data}\n")
+
+        # Mostra a saída do resultado
+        y_pred = np.round_(result)
+        self.predicoes.write(str(np.round_(result)))
+
+        # Monta visualizacao do dataset bem como o retulo e o
+        # resultados das predicoes
+        self.predicoes.write("\n\nResultados das predicoes para o dataset:\n")
+        self.predicoes.write(f"\n{self.all_result_string} ")
+
+        # Cria matriz de confusao 
+        self.predicoes.write("\n\nMatrix de confusao:\n")
+        y_true = test_labels
+        self.predicoes.write(str(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))))
+
+        # Cria relatorio de classificacao
+        self.predicoes.write("\n\nRelatorio de classificacao:\n")
+        target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
+        self.predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names)))
+        self.predicoes.close()
+
+    def predictionOutputFormater(self, results, test_data, name_of_file,test_labels):
+        target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
+
+        results = np.round_(results)
+
+        results = np.array(results, dtype=int)
+        test_labels = np.array(test_labels, dtype=int)
+
+        numered_labels = self.labels_numerator(test_labels)
+        results = self.separateResults(results)
+
+        charDrawer = characterPrint()
+        
+        for index in range(len(numered_labels)):
+            row_char_draw = ""
+            target_index_a = numered_labels[index]
+            correct_answer = target_names[target_index_a]
+            if charDrawer.char_draws_string(index,name_of_file) is not None :
+                row_char_draw = row_char_draw + charDrawer.char_draws_string(index,name_of_file) + "\n"
+    
+            data_of_prediction = "label : "+str(correct_answer)+" ,predicoes : "
+            prediction_respective = ""
+            for j in range(len(results[index])):
+                target_index = results[index][j]
+                prediction = target_names[target_index]
+                prediction_respective = prediction_respective + " p"+str(j)+" : "+str(prediction)+" , "
+
+            if len(prediction_respective) == 0:
+                prediction_respective = "Nao ha predicoes"
+            self.all_result_string = self.all_result_string +"Teste "+str(index+1)+") \n  Visualizacao dos dados : \n\n " +row_char_draw + " Resultados da predicao : "+data_of_prediction + prediction_respective +"\n\n"
 
 
-#TODO: Colocar 1 camada escondida e colocar os arquivos csv corretos.
-u = Usage(0.1, sigmoid, 2, 63, 7)
-u.data_training('caracteres-limpo.csv')
-print("Predicoes para caracteres-limpo.csv")
-u.predict('caracteres-limpo.csv')
-print("Predicoes para caracteres-ruido2.csv")
-u.predict('caracteres-ruido2.csv')
-print("Predicoes para caracteres-ruido22.csv")
-u.predict('caracteres-ruido22.csv')
+
+    def labels_numerator(self,labels):
+        numered_labels = []
+
+        for label in labels:
+            for index in range(len(label)):
+                if label[index] == 1 :
+                    numered_labels.append(index)
+
+        return numered_labels
+
+    def separateResults(self, dataset_output):
+        result = []
+        final_answer = []
+
+        for dataset_row in dataset_output:
+            temp = []
+            #print("this is line : ", dataset_output[dataset_row])
+            for output_index in range(self.output_length):
+                result = dataset_row[output_index]
+
+                #print("this is the output result : ", result)
+                if result == 1 :
+                    temp.append(output_index)
+            final_answer.append(temp)
+
+        return final_answer
+
+if __name__ == '__main__':
+    #TODO: Colocar 1 camada escondida e colocar os arquivos csv corretos.
+    u = Usage(0.1, sigmoid, 2, 63, 7)
+    u.data_training('caracteres-limpo.csv')
+    print("Predicoes para caracteres-limpo.csv")
+    u.predict('caracteres-limpo.csv')
+    print("Predicoes para caracteres-ruido.csv")
+    u.predict('caracteres-ruido.csv')
+    print("Predicoes para caracteres_ruido20.csv")
+    u.predict('caracteres_ruido20.csv')
 
