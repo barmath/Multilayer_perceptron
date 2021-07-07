@@ -11,10 +11,10 @@ class Mlp(object):
        
     """
     def __init__(self, alpha, activation_function, hidden_layer_length, input_length, output_length):
-        """Contrutor padrão que instacia o MlP.
+        """Contrutor padrão que instancia o MlP.
     
             Recebe condições iniciais para instaciar a Multilayer perceptron
-            Defini variáveis globais e chama funções para definir condições 
+            Define variáveis globais e chama funções para definir condições 
             básicas de pesos e biases 
 
             Args:
@@ -31,25 +31,26 @@ class Mlp(object):
                 output_length : Integer que representa tamanho da saida
 
         """
-        # Seta todas variaveis globais utilizadas pra configurar a MLP
+
+        # Define todas variaveis globais utilizadas pra configurar a MLP
         self.alpha = alpha
         self.hidden_layer_length = hidden_layer_length
         self.activation_function = activation_function
         self.input_length = input_length
         self.output_length = output_length
 
-        # Seta parte da hidden e outp
+        # Define parte da hidden e output
         self.setup_hidden_layer()
         self.setup_output_layer()
         
-        # Seta todos os bias
+        # Define todos os bias
         self.set_biases()
 
     def setup_hidden_layer(self):
         """Define condições iniciais da camada escondida.
     
            Cria vetores que representarão os pesos para camada escondida
-           com a utilizacao da funcoes auxiliares do numpy
+           com a utilizacao da funções auxiliares do numpy
            np.random: define valores aleatorios
            reshape: cria matriz com as dimencoes dadas
 
@@ -101,7 +102,7 @@ class Mlp(object):
         """Realiza o feedfoward para computação dos neurônios das camadas escondida e de saída.
     
            Computa e calcula os pesos de cada neurônio da camada escondida e de saída
-           com a utilizacao da funcoes auxiliaries do numpy
+           com a utilização da funções auxiliares do numpy
            np.matmul: realiza multiplicação de matrizes
 
            Args:
@@ -114,18 +115,19 @@ class Mlp(object):
         # Nessa função, tomamos como base as equações apresentadas no algoritmo dos slides 
         # "Redes Neurais Artificiais - Perceptron Simples e Multilayer Perceptron"
 
-        # Calcula os neurônios da camada escondida através dos pesos, os valores dos dados de entrada e bias 
+        # Calcula os neurônios da camada escondida através dos pesos com os valores dos dados de entrada e bias 
         self.hidden_layer_in = np.matmul(data, self.hidden_layer_weight) + self.hidden_layer_bias
 
         # Aplica a função de ativação em cada neurônio da camada escondida
         self.hidden_layer_out = self.activation_function(self.hidden_layer_in)
 
-        # # Calcula os neurônios da camada de saída através dos pesos, os valores dos neurônios da camada escondida após a aplicação da função de ativação e bias 
+        # Calcula os neurônios da camada de saída através dos pesos com os valores dos neurônios da camada escondida após a aplicação da função de ativação e bias 
         self.output_layer_in = np.matmul(self.hidden_layer_out, self.output_layer_weight) + self.output_layer_bias
 
         # Aplica a função de ativação em cada neurônio da camada de saída
         output_layer_out = self.activation_function(self.output_layer_in)
 
+        # Retorna os valores preditos pelo cálculo de pesos
         return output_layer_out
     
     def backpropagation(self, labels, output_layer_out, data):
@@ -135,7 +137,7 @@ class Mlp(object):
         através de diversas equações a fim de gerar um melhor desempenho no aprendizado.
         Utilizamos funções auxiliares do numpy
         np.matmul: realiza multiplicação de matrizes
-        reshape: cria matriz com as dimenções dadas
+        reshape: cria matriz com as dimensões dadas
             
         Args:
             labels: Vetor passado para representar as saídas esperadas
@@ -153,26 +155,26 @@ class Mlp(object):
         # Esse bloco representa o passo 6 do algoritmo do slide, em que calculamos o delta_k e os deltas wjk e w0k
         # Respectivamente temos delta_wjk como delta_output_layer_weights e deltaw0k como delta_output_layer_bias
 
-        # Calculo de erro (Resposta esperada - Resposta dada pelo algoritmo)
+        # Cálculo de erro (Resposta esperada - Resposta dada pelo algoritmo)
         error = (labels - output_layer_out)  
-        # Calculo do termo de correção de erro 
+        # Cálculo do termo de correção de erro 
         delta_k =  error * self.activation_function.prime(self.output_layer_in) 
         
-        # Calculo da correção de bias de cada unidade de saída
+        # Cálculo da correção de bias de cada unidade de saída
         delta_output_layer_bias = self.alpha * delta_k  
-        # Calculo da correção de pesos de cada unidade de saída
+        # Cálculo da correção de pesos de cada unidade de saída
         delta_output_layer_weights = self.alpha * np.matmul(self.hidden_layer_out.reshape(-1, 1), delta_k.reshape(1, -1))  
 
         # Esse bloco representa o passo 7 do algoritmo do slide, em que calculamos o delta_in_j e o delta_j bem como os deltas vij e v0j
         # Respectivamente temos delta_vij como delta_output_layer_weights e deltav0j como delta_output_layer_bias
         
-        # Calculo do termo de correção de erro utilizando o termo de correção da camada posterior
+        # Cálculo do termo de correção de erro utilizando o termo de correção da camada posterior
         delta_in_j = np.matmul(self.output_layer_weight, delta_k)  
         delta_j = delta_in_j * self.activation_function.prime(self.hidden_layer_in) 
         
-        # Calculo da correção de bias de cada unidade escondida
+        # Cálculo da correção de bias de cada unidade escondida
         delta_hidden_layer_bias = self.alpha * delta_j   
-        # Calculo da correção de pesos da camada de cada unidade escondida
+        # Cálculo da correção de pesos da camada de cada unidade escondida
         delta_hidden_layer_weight = self.alpha * np.matmul(data.reshape(-1, 1), delta_j.reshape(1, -1)) 
 
         # Esse bloco representa o passo 8 do algoritmo do slide, em que calculamos as alterações dos bias e pesos de cada unidadde de saída e cada unidade escondida
@@ -185,34 +187,35 @@ class Mlp(object):
         self.hidden_layer_bias = self.hidden_layer_bias + delta_hidden_layer_bias
         self.hidden_layer_weight = self.hidden_layer_weight + delta_hidden_layer_weight
 
-    def fit(self, training_dataset, training_dataset_labels, threshold = 1):
-        """Faz o trainamento baseado nos dados de treinamentos e seus labels.
+    def fit(self, training_dataset, training_dataset_labels, threshold = 0.01):
+        """Faz o treinamento baseado nos dados de treinamentos e seus labels.
     
-        Atravez da condicao de parada do erro medio,
-        fazemos o calculo deste e equanto este erro medio nao for maior que
-        o threshold definido rodamos o treinamento chamando o feed forward e 
-        o back propagation para os inputs passados 
+        Através da condição de parada do erro médio,
+        fazemos o cálculo deste e enquanto este erro médio quadrado for maior que
+        o threshold definido, rodamos o treinamento chamando o feed forward e 
+        o backpropagation para os inputs passados 
             
         Args:
-            x : Vetor passado para representar as saídas esperadas
+            training_dataset : Vetor passado para representar as saídas esperadas
 
-            output_layer_out:  Vetor que representa as saídas dos neurônios 
+            training_dataset_labels:  Vetor que representa as saídas dos neurônios 
             da camada de saída com a função de ativação 
 
-            data: Vetor que representa os valores dos neurônios de entrada
+            threshold: Float que representa um limiar para condição de parada
 
         """
-
+        
+        #Inicialização das variáveis de erro quadrado, épocas e plotagem para gráfico
         squaredError = 2 * threshold
         counter = 0
         grafico = []
 
-        # Inicializacao dos arquivos para escritas dos parametros de saida e logs
+        # Inicialização dos arquivos para escritas dos parâmetros de saida e logs
         erroFile = open("saida/erro-medio-quadrado.txt", "w")
         pesosEntradaFile = open("saida/pesos-iniciais.txt", "w")
         pesosSaidaFile = open("saida/pesos-finais.txt", "w")
 
-        # Definicao da condicao de parada para a execucao do back propagation
+        # Definição da condição de parada para a execução do treinamento da rede neural
         while (squaredError > threshold):
             squaredError = 0
             for index in range(len(training_dataset)):
@@ -236,39 +239,39 @@ class Mlp(object):
                 # e os resultados esperados (Xp)
                 self.backpropagation(Yp, Op, Xp)
 
-
+            # Cálculo do erro quadrado médio
             squaredError = squaredError / len(training_dataset)
-
             print("Erro ao quadrado : ", squaredError)
-            # Escrita do erro medio quadrado para monitorar como esta execucao 
+
+            # Escrita do erro médio quadrado para monitorar como esta execucao 
             erroFile.write(f"Erro medio quadrado: {squaredError}\n")
-            # Incrementar o numero de epocas 
+            # Incrementar o numero de épocas 
             counter += 1
             # Alimenta dados para o grafico
             grafico.append(squaredError)
 
-        # Escreve numero de iteracoes necessarias
+        # Escreve número de iterações necessárias
         erroFile.write(f"Iteracoes necessarias: {counter}")
         erroFile.close()
 
-        # Escreve Informacoes referentes aos pesos de estrada da camada escondida antes o treinamento
-        pesosEntradaFile.write(f"Pesos de entrada para a camada escondida apos o: \n{self.hidden_layer_weight}")
+        # Escreve informações referentes aos pesos de entrada da camada escondida após o treinamento
+        pesosEntradaFile.write(f"Pesos de entrada para a camada escondida apos o treinamento: \n{self.hidden_layer_weight}")
         pesosEntradaFile.close()
 
-        # Escreve Informacoes referentes aos pesos de estrada da camada saída apos o treinamento
+        # Escreve informações referentes aos pesos de entrada da camada saída após o treinamento
         pesosSaidaFile.write(f"Pesos de entrada para a camada de saída apos o treinamento: \n{self.output_layer_weight}")
         pesosSaidaFile.close()
 
-        # Cria imagem gráfico dos erros médios
+        # Cria uma imagem do gráfico dos erros médios
         plt.plot(grafico)
-        # Salva imagem gráfico dos erros médios
+        # Salva a imagem do gráfico dos erros médios
         plt.savefig('saida/grafico.png')
 
     def predict(self, data, name_of_file, y_true):
         """Realiza a predição dos resultados.
     
            Mostra a saída da predição dos resultados feitos pelo algoritmo
-           com a utilizacao da funcoes auxiliaries do numpy, e criação de txt para apresentação
+           com a utilização da funções auxiliares do numpy, e criação de txt para apresentação
            dos resultados
            np.round_: cria um vetor com decimais
 
@@ -278,11 +281,14 @@ class Mlp(object):
                name_of_file: Nome do arquivo a ser lido
 
                y_true: Respostas esperadas para matriz de confusão
+
+            Returns:
+                   output_layer_out: Vetor das respostas preditas
            
         """
-        #predicoes = open(f"Saida/predicoes-{name_of_file}.txt", "w")
-
+       
         # Aplica o feedfoward nos neurônios de entrada
         output_layer_out = self.feed_forward(data)
 
+        # Retorna o vetor com as respostas preditas
         return output_layer_out

@@ -1,4 +1,4 @@
-Alpha: 0.1
+Alpha: 0.2
 Funcao de ativacao: sigmoid
 Comprimento da camada escondida: 2
 Comprimento da entrada: 63

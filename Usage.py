@@ -1,5 +1,5 @@
 # Importações de outras classes e bibliotecas
-from Csv_maneger import Csv_maneger
+from Csv_manager import Csv_manager
 from Activation_functions_lib import sigmoid
 from characterPrint import characterPrint
 from Mlp import Mlp
@@ -9,113 +9,124 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 
 class Usage(object):
-    """Classe Usage fonece condições mínimas para que a Mlp seja instanciada,
-       bem como as funções que ajudam a organização dos dados e mostragem de re-
-       sultados 
+    """Classe Usage fornece condições mínimas para que a Mlp seja instanciada,
+       bem como as funções que ajudam a organização dos dados e mostragem de 
+       resultados 
     
     """
 
     def __init__(self, alpha, activation_function, hidden_layer_length, input_length, output_length):
-        """Construtor padrão e responsável por criar as 
+        """Construtor padrão é responsável por criar as 
            condições mínimas para treinar e prever com base em dados.
 
-           Deve ser passado como parametro argumetos para que em um primeiro momento
-           A MLP seja instanciada
+           Deve ser passado como parâmetro os argumentos, para que em um primeiro momento
+           a MLP seja instanciada
         
         Args:
-            alpha : Float passado para representar o alpha que e 
+            alpha : Float passado para representar o alpha que é
             usado na hora do backpropagation 
 
-            activation_function : Funcao que e usada no backpropagation 
+            activation_function : Função que é usada no backpropagation 
 
-            hidden_layer_length : Integer que representa o tamanho da camada 
+            hidden_layer_length : Inteiro que representa o tamanho da camada 
                                   escondida
 
-            input_length : Integer que representa tamanho da entrada
-            output_length : Integer que representa tamanho da saida
+            input_length : Inteiro que representa o tamanho da entrada
+
+            output_length : Inteiro que representa o tamanho da saída
+
         """
+        # Criação de txt para print de parâmetros
         parametersFile = open("saida/parametros.txt", "w")
         parametersFile.write(f"Alpha: {alpha}\nFuncao de ativacao: sigmoid\nComprimento da camada escondida: {hidden_layer_length}\nComprimento da entrada: {input_length}\nComprimento da saida: {output_length}")
         parametersFile.close()
 
+        # Criação de variáveis globais de tamanho de saída e instância da MLP
         self.output_length = output_length
         self.Mlp_instance = Mlp(alpha, activation_function, hidden_layer_length, input_length, output_length)
     
     def data_training(self, name_of_file):
         """Recebe uma String com o nome do arquivo para ser usado no treinamento.
     
-        Na primeira parte declara matrizes para os dados e rotulos 
-        Em segundo passa o nome do arquivo para a funcao data_organizer
-        responsavel por separar os dados dos rotulos 
+        Na primeira parte declara matrizes para os dados e rótulos 
+        Em segundo passa o nome do arquivo para a função data_organizer
+        responsável por separar os dados dos rótulos 
 
-        Na segunda parte converte os conjutos de dados e 
-        rotulos para arranjos em numpy atravez do comando 
+        Na segunda parte converte os conjuntos de dados e 
+        rótulos para arranjos em numpy através do comando 
         "np.array" 
 
-        E por fim na terceira parte chama a funcao fit do MLP para que 
+        E por fim na terceira parte chama a função fit do MLP para que 
         o algoritimo treine com base nos dados
         
 
         Args:
-            Uma String com o nome do arquivo que sera usado para o treinamento
+            name_of_file: String com o nome do arquivo que será usado para o treinamento
 
         """
 
-        # Primera parte 
+        # Cria os vetores para tamanho/atribuição de dados de entrada e dados de saída
         self.training_inputs = []
         self.labels = []
+
+        # Organiza os dados de entrada e saída
         self.training_inputs, self.labels = self.data_organizer(name_of_file)
 
-        # Segunda parte 
+        # Converte os vetores de entrada e saída para numpy array
         self.training_inputs = np.array(self.training_inputs)
         self.labels = np.array(self.labels)
-
-        # Terceira parte 
-        #self.Mlp_instance.fit(self.training_inputs, self.labels, max_epochs= 1000000,max_error=0.1)
-        # chamando backpropagation demo
+    
+        # Chama a função da Mlp.py para treinamento da rede neural MLP
         self.Mlp_instance.fit(self.training_inputs, self.labels)
 	
     def convert_negative_to_zero(self, training_inputs):
         """Utilizada para converter valores negativos em 0.
     
-        Usando um laco aninhado, iteramos por todos elementos 
-        da matriz passada, numa condicao de se encontrarmos um -1
-        trocamos para 0 na mesma posicao 
+        Usando um laço aninhado, iteramos por todos elementos 
+        da matriz passada, numa condição de:
+        se encontrarmos um -1, trocamos por 0 na mesma posição 
 
         Args:
-            O arranjo do arquivo para ser convertido
+            training_inputs: Vetor do arquivo para ser convertido
 
         Returns:
-            O arranjo convertido
-        """
+            training_inputs: Vetor convertido
 
+        """
+        
+        # Laço para troca de valores de -1 para 0
         for row in range(len(training_inputs)):
             for column in range(len(training_inputs[0])):
                 if training_inputs[row][column] == -1 :
                     training_inputs[row][column] = 0
 
+        # Retorno do vetor convertido
         return training_inputs
 
     
     def data_organizer(self,name_of_file):
-        """Divisosr de dados para treino e rotulos.
+        """Divisor de dados para treino e rótulos.
     
-        Chamando o Csv_maneger para abrir o arquivo 
-        na sequencia aloca duas matrizes uma para as entradas
-        (training_inputs) e a otra para os rotulos (labels).
+        Chamando o Csv_manager para abrir o arquivo 
+        na sequência aloca duas matrizes uma para as entradas
+        (training_inputs) e a outra para os rótulos (labels)
 
-        Na sequencia divide os dados dos rotulos dentro on laco
+        Na sequência divide os dados dos rótulos dentro do laço
 
-        por ultimo popula as duas saidas com os rotulos e dados para
+        Por último popula as duas saídas com os rótulos e dados para
         treino os colocando dentro das matrizes e retornando-os
 
         Args:
-            String com o nome do arquivo ( name_of_file ) para ser organizado
+            name_of_file: String com o nome do arquivo ( name_of_file ) para ser organizado
 
         Returns:
-            Duas matrizes com os dados e rotulos respectivamente
+            training_inputs: Matriz com os dados de entrada
+            labels: Matriz com os rótulos
+
         """
-        training_data = Csv_maneger.read_csv(name_of_file)
+
+        # Lê o arquivo CSV para receber os dados
+        training_data = Csv_manager.read_csv(name_of_file)
 
         # Separar dados de labels 
         training_inputs = [ [] for _ in range(len(training_data))]
@@ -132,23 +143,24 @@ class Usage(object):
         # Converter todos -1 em 0
         training_inputs = self.convert_negative_to_zero(training_inputs)
 
+        # Retorna as matrizes de dados de entrada e rótulos
         return training_inputs, labels
     
-    # TODO Funcao para mostrar resultados 
     def predict(self, name_of_file):
-        """Utilizada para fazer as predicoes.
+        """Utilizada para fazer as predições.
     
-        Primeiramente abre o arquivo usando o Csv_maneger, 
-        na sequencia aloca matrizes para os conjuntos de dados 
-        bem como os rotulos.
-        Separa o que e rotulo de dado.
-        E por ultimo chama a funcao de predicao passando o conjunto de dados
+        Primeiramente abre o arquivo usando o Csv_manager, 
+        na sequência aloca matrizes para os conjuntos de dados 
+        bem como os rótulos
+        Separa o que é rótulo de dado
+        E por ultimo chama a função de predição passando o conjunto de dados
 
         Args:
-            O nome do arquivo ( name_of_file ) para ser predito
+            name_of_file: O nome do arquivo ( name_of_file ) para ser predito
         """
 
-        training_data = Csv_maneger.read_csv(name_of_file)
+        # Lê o arquivo CSV para atribuir os dados de entrada
+        training_data = Csv_manager.read_csv(name_of_file)
 
         # Separar dados de labels 
         training_inputs = [ [] for _ in range(len(training_data))]
@@ -164,7 +176,7 @@ class Usage(object):
         test_data = np.array(test_data)
         test_labels = np.array(test_labels)
 
-        # Faz a predicao dos dados 
+        # Faz a predição dos dados 
         result = self.Mlp_instance.predict(test_data, name_of_file, test_labels)
         self.predictionOutputFormater(result, test_data, name_of_file, test_labels)
 
@@ -188,12 +200,12 @@ class Usage(object):
         self.predicoes.write("\n\nResultados das predicoes para o dataset:\n")
         self.predicoes.write(f"\n{self.all_result_string} ")
 
-        # Cria matriz de confusao 
-        self.predicoes.write("\n\nMatrix de confusao:\n")
+        # Cria matriz de confusão 
+        self.predicoes.write("\n\nMatriz de confusao:\n")
         y_true = test_labels
         self.predicoes.write(str(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))))
 
-        # Cria relatorio de classificacao
+        # Cria relatório de classificação
         self.predicoes.write("\n\nRelatorio de classificacao:\n")
         target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
         self.predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names)))
@@ -248,11 +260,10 @@ class Usage(object):
 
         for dataset_row in dataset_output:
             temp = []
-            #print("this is line : ", dataset_output[dataset_row])
+
             for output_index in range(self.output_length):
                 result = dataset_row[output_index]
 
-                #print("this is the output result : ", result)
                 if result == 1 :
                     temp.append(output_index)
             final_answer.append(temp)
@@ -260,8 +271,7 @@ class Usage(object):
         return final_answer
 
 if __name__ == '__main__':
-    #TODO: Colocar 1 camada escondida e colocar os arquivos csv corretos.
-    u = Usage(0.1, sigmoid, 2, 63, 7)
+    u = Usage(0.2, sigmoid, 2, 63, 7)
     u.data_training('caracteres-limpo.csv')
     print("Predicoes para caracteres-limpo.csv")
     u.predict('caracteres-limpo.csv')

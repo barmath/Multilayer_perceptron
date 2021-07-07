@@ -1,8 +1,7 @@
-
 # Importação de biblioteca
 import csv
 
-class Csv_maneger:
+class Csv_manager:
 	"""Lê um arquivo CSV e o guarda em um vetor.
 
 	   Essa classe abre, guarda e lê um arquivo CSV retornando um vetor de todas as linhas.

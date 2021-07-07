@@ -1,4 +1,4 @@
-from Csv_maneger import Csv_maneger
+from Csv_manager import Csv_manager
 
 class characterPrint(object):
     def create_char_draw(self,linha,name_of_file):
@@ -13,7 +13,7 @@ class characterPrint(object):
             Returns:
                 matriz com representacao da letra no dataset
         """
-        data = Csv_maneger.read_csv(name_of_file)
+        data = Csv_manager.read_csv(name_of_file)
         contador = 0
         desenho = []
         for j in range (9):
