@@ -195,8 +195,8 @@ class Usage(object):
         y_pred = np.round_(result)
         self.predicoes.write(str(np.round_(result)))
 
-        # Monta visualizacao do dataset bem como o retulo e o
-        # resultados das predicoes
+        # Monta visualizacao do dataset bem como o rótulo e o
+        # resultados das predições
         self.predicoes.write("\n\nResultados das predicoes para o dataset:\n")
         self.predicoes.write(f"\n{self.all_result_string} ")
 
@@ -271,7 +271,7 @@ class Usage(object):
         return final_answer
 
 if __name__ == '__main__':
-    u = Usage(0.2, sigmoid, 2, 63, 7)
+    u = Usage(0.2, sigmoid, 1, 63, 7)
     u.data_training('caracteres-limpo.csv')
     print("Predicoes para caracteres-limpo.csv")
     u.predict('caracteres-limpo.csv')
