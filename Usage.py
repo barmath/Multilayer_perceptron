@@ -24,9 +24,9 @@ class Usage(object):
         
         Args:
             alpha : Float passado para representar o alpha que é
-            usado na hora do backpropagation 
+            usado na hora do backpropagation (taxa de aprendizado)
 
-            activation_function : Função que é usada no backpropagation 
+            activation_function : Função que é usada no backpropagation e feedfoward
 
             hidden_layer_length : Inteiro que representa o tamanho da camada 
                                   escondida
@@ -63,6 +63,8 @@ class Usage(object):
         Args:
             name_of_file: String com o nome do arquivo que será usado para o treinamento
 
+            csv_num_line: Inteiro que representa no número de linhas que o csv irá ler
+
         """
 
         # Cria os vetores para tamanho/atribuição de dados de entrada e dados de saída
@@ -94,7 +96,7 @@ class Usage(object):
             training_inputs: Vetor do arquivo para ser convertido
 
         Returns:
-            training_inputs: Vetor convertido
+               training_inputs: Vetor convertido
 
         """
         
@@ -112,7 +114,7 @@ class Usage(object):
         """Divisor de dados para treino e rótulos.
     
         Chamando o Csv_manager para abrir o arquivo 
-        na sequência aloca duas matrizes uma para as entradas
+        na sequência aloca duas matrizes: uma para as entradas
         (training_inputs) e a outra para os rótulos (labels)
 
         Na sequência divide os dados dos rótulos dentro do laço
@@ -216,6 +218,18 @@ class Usage(object):
         self.predicoes.close()
 
     def predictionOutputFormater(self, results, test_data, name_of_file,test_labels):
+        """Utilizada para formatar o arquivo de saída de predições
+
+        Args:
+            results: Vetor que representa os resultados das predições
+
+            test_data: Vetor que representa os valores de entrada
+
+            name_of_file: O nome do arquivo ( name_of_file ) para ser predito
+
+            test_labels: Vetor que representa os valores de saída
+    
+        """
         target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
 
         results = np.round_(results)
@@ -249,6 +263,16 @@ class Usage(object):
 
 
     def labels_numerator(self,labels):
+        """Utilizada para formatar o arquivo de saída de predições
+
+        Args:
+            labels: Vetor que representa os valores de saída
+        
+        Returns:
+               numered_labels: Vetor que representa quais são as respostas
+    
+        """
+
         numered_labels = []
 
         for label in labels:
@@ -259,6 +283,15 @@ class Usage(object):
         return numered_labels
 
     def separateResults(self, dataset_output):
+        """Utilizada para separar os resultados
+
+        Args:
+            dataset_output: Vetor que representa os dataset de saída
+        
+        Returns:
+               final_answer: Vetor que representa os resultados de resposta
+    
+        """
         result = []
         final_answer = []
 

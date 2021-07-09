@@ -4,20 +4,20 @@ import csv
 class Csv_manager:
 	"""Lê um arquivo CSV e o guarda em um vetor.
 
-	   Essa classe abre, guarda e lê um arquivo CSV retornando um vetor de todas as linhas.
+	   Essa classe abre, guarda e lê um arquivo CSV retornando um vetor de todas as linhas
     """
 	def read_csv(name_of_file):
 		"""Lê, abre e formata um arquivo CSV.
     
 		Basicamente checa se o arquivo não está vazio;
 		Após isso, abre e passa por todas as linhas do arquivo CSV;
-		e os guarda num vetor.
+		e os guarda num vetor
 
         Args:
-            name_of_file: String com o nome do arquivo a ser aberto.
+            name_of_file: String com o nome do arquivo a ser aberto
 
         Returns:
-			name_of_file: Uma lista de inteiros com todos os datos do arquivo requerido.
+			name_of_file: Uma lista de inteiros com todos os dados do arquivo requerido
         """
 
 		# Verifica se o arquivo está vazio

@@ -8,11 +8,13 @@ class characterPrint(object):
             Os '1's viram asteriscos e o resto vira espaço em branco
 
             Args:
-                String com o nome do arquivo ( name_of_file ) 
+                name_of_file: String com o nome do arquivo ( name_of_file )
+                linha: Inteiro que representa a linha do csv
 
             Returns:
-                matriz com representacao da letra no dataset
+                desenho: matriz com representação da letra no dataset
         """
+
         data = Csv_manager.read_csv(name_of_file)
         contador = 0
         desenho = []
@@ -25,14 +27,17 @@ class characterPrint(object):
                     arr[i] = ' '
                 contador += 1
             desenho.append(arr)
+
         return desenho
 
     def print_char_draw(self,linha,name_of_file):
         """Printa dados do dataset
 
             Args:
-                String com o nome do arquivo ( name_of_file ) 
+                name_of_file: String com o nome do arquivo ( name_of_file )
+                linha: Inteiro que representa a linha do csv 
         """
+
         matriz = self.create_char_draw(linha,name_of_file)
         for j in range (9):
             for i in range(7):
@@ -44,11 +49,13 @@ class characterPrint(object):
         """Cria uma string da linha passada 
 
             Args:
-                String com o nome do arquivo ( name_of_file ) 
+                name_of_file: String com o nome do arquivo ( name_of_file )
+                linha: Inteiro que representa a linha do csv
 
             Returns:
-                String representando a linha respectiva do dataset
+                all_draws: String representando a linha respectiva do dataset
         """
+
         all_draws = ""
         matriz = self.create_char_draw(linha,name_of_file)
         for j in range (9):
@@ -56,13 +63,10 @@ class characterPrint(object):
             for i in range(7):
                 line = line + str(matriz[j][i])
             all_draws = all_draws + line + "\n"
+
         return all_draws
 
-#c = characterPrint()
-#a = ""
-#for i in range(0,4):
-#    a = a + c.char_draws_string(i,'caracteres-limpo.csv')
-#print(a)
+
 
 
     

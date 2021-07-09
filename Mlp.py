@@ -17,17 +17,17 @@ class Mlp(object):
             básicas de pesos e biases 
 
             Args:
-                alpha : Float passado para representar o alpha que e 
+                alpha : Float passado para representar o alpha que é 
                 usado na hora do backpropagation (taxa de aprendizado)
 
-                activation_function : Funcao que e usada no backpropagation 
+                activation_function : Função que é usada no backpropagation e feedfoward 
 
-                hidden_layer_length : Integer que representa o tamanho da camada 
-                                    escondida
+                hidden_layer_length : Inteiro que representa o tamanho da camada 
+                                      escondida
 
-                input_length : Integer que representa tamanho da entrada
+                input_length : Inteiro que representa tamanho da entrada
 
-                output_length : Integer que representa tamanho da saida
+                output_length : Inteiro que representa tamanho da saida
 
         """
 
@@ -42,26 +42,26 @@ class Mlp(object):
         self.setup_hidden_layer()
         self.setup_output_layer()
         
-        # Define todos os bias
+        # Define todos os biases
         self.set_biases()
 
     def setup_hidden_layer(self):
         """Define condições iniciais da camada escondida.
     
            Cria vetores que representarão os pesos para camada escondida
-           com a utilizacao da funções auxiliares do numpy
-           np.random: define valores aleatorios
-           reshape: cria matriz com as dimencoes dadas
+           com a utilização da funções auxiliares do numpy
+           np.random: define valores aleatórios
+           reshape: cria matriz com as dimensões dadas
 
         """
 
-        # Matriz contendo todos pesos 
+        # Matriz contendo todos pesos que são definidos aleatoriamente (inicialmente)
         self.hidden_layer_weight = np.random.random(self.input_length * self.hidden_layer_length).reshape(self.input_length, self.hidden_layer_length)
 
-        # Vetor de entrada da camada escondida com o tamanho dela mesmo
+        # Vetor de entrada da camada escondida com o tamanho dela mesma
         self.hidden_layer_in = np.empty(self.hidden_layer_length)
 
-        # Vetor de saida da camada escondida com o tamanho dela mesmo
+        # Vetor de saída da camada escondida com o tamanho dela mesma
         self.hidden_layer_out = np.empty(self.hidden_layer_length)
 
     def setup_output_layer(self):
@@ -69,16 +69,16 @@ class Mlp(object):
     
            Cria vetores que representarão os pesos para camada escondida
            com a utilização da funções auxiliares do numpy
-           np.random: define valores aleatorios
-           reshape: cria matriz com as dimencoes dadas
+           np.random: define valores aleatórios
+           reshape: cria matriz com as dimensões dadas
            empty: cria um vetor vazio
 
         """
 
-        # Matriz com todos os pesos da camada de saida que tem como peso a
+        # Matriz com todos os pesos da camada de saida que são definidos aleatoriamente
         self.output_layer_weight = np.random.random(self.hidden_layer_length *  self.output_length).reshape(self.hidden_layer_length, self.output_length)
 
-        # Matriz com todos os pesos da camada de saida 
+        # Matriz com todos os pesos da camada de saída 
         self.output_layer_in = np.empty(self.hidden_layer_length)
 
     def set_biases(self):
@@ -108,7 +108,7 @@ class Mlp(object):
                data: Vetor que representa os valores dos neurônios de entrada
            
            Returns:
-                  output_layer_out: Vetor que representa os valores dos neurônios de saídas após a aplicação da função de ativação
+                  output_layer_out: Vetor que representa os valores dos neurônios de saída após a aplicação da função de ativação
 
         """
         # Nessa função, tomamos como base as equações apresentadas no algoritmo dos slides 
@@ -132,7 +132,7 @@ class Mlp(object):
     def backpropagation(self, labels, output_layer_out, data):
         """Realiza a retropropagação do erro na rede neural.
     
-        Calula as correções dos pesos dos neurônios e aplica a retropropagação do erro 
+        Calcula as correções dos pesos dos neurônios e aplica a retropropagação do erro 
         através de diversas equações a fim de gerar um melhor desempenho no aprendizado.
         Utilizamos funções auxiliares do numpy
         np.matmul: realiza multiplicação de matrizes
@@ -258,7 +258,7 @@ class Mlp(object):
         pesosEntradaFile.close()
 
         # Escreve informações referentes aos pesos de entrada da camada saída após o treinamento
-        pesosSaidaFile.write(f"Pesos de entrada para a camada de saída apos o treinamento: \n{self.output_layer_weight}")
+        pesosSaidaFile.write(f"Pesos de entrada para a camada de saida apos o treinamento: \n{self.output_layer_weight}")
         pesosSaidaFile.close()
 
         # Cria uma imagem do gráfico dos erros médios
