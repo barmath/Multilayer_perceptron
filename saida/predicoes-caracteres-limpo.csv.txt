@@ -1,4 +1,4 @@
-Data de criacao : Timestamp: 2021-07-08 23:56:08
+Data de criacao : Timestamp: 2021-07-09 14:12:26
 
 Labels testados : 21
 [[1. 0. 0. 0. 0. 0. 0.]
@@ -15,11 +15,11 @@ Labels testados : 21
  [0. 0. 0. 0. 1. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 0. 0. 1.]
- [1. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1.]
  [0. 1. 0. 0. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0.]
  [0. 0. 0. 1. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 0. 0. 1.]]
 
@@ -248,7 +248,7 @@ Teste 15)
   *     *
   **   **
 
- Resultados da predicao : label : A ,predicoes :  p0 : A ,  p1 : D , 
+ Resultados da predicao : label : A ,predicoes :  p0 : K , 
 
 Teste 16) 
   Visualizacao dos dados : 
@@ -308,7 +308,7 @@ Teste 19)
    *    *
   *******
 
- Resultados da predicao : label : E ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : E ,predicoes :  p0 : E , 
 
 Teste 20) 
   Visualizacao dos dados : 
@@ -343,26 +343,26 @@ Teste 21)
  
 
 Matriz de confusao:
-[[3 0 0 0 0 0 0]
+[[2 0 0 0 0 0 1]
  [0 3 0 0 0 0 0]
  [0 0 3 0 0 0 0]
  [0 0 0 3 0 0 0]
- [1 0 0 0 2 0 0]
+ [0 0 0 0 3 0 0]
  [0 0 0 0 0 3 0]
  [0 0 0 0 0 0 3]]
 
 Relatorio de classificacao:
               precision    recall  f1-score   support
 
-           A       1.00      1.00      1.00         3
+           A       1.00      0.67      0.80         3
            B       1.00      1.00      1.00         3
            C       1.00      1.00      1.00         3
-           D       0.75      1.00      0.86         3
-           E       1.00      0.67      0.80         3
+           D       1.00      1.00      1.00         3
+           E       1.00      1.00      1.00         3
            J       1.00      1.00      1.00         3
-           K       1.00      1.00      1.00         3
+           K       0.75      1.00      0.86         3
 
    micro avg       0.95      0.95      0.95        21
    macro avg       0.96      0.95      0.95        21
 weighted avg       0.96      0.95      0.95        21
- samples avg       0.93      0.95      0.94        21
+ samples avg       0.95      0.95      0.95        21
