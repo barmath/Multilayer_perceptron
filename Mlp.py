@@ -3,7 +3,6 @@ import random
 import datetime
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, classification_report
 
 
 class Mlp(object):
@@ -187,7 +186,7 @@ class Mlp(object):
         self.hidden_layer_bias = self.hidden_layer_bias + delta_hidden_layer_bias
         self.hidden_layer_weight = self.hidden_layer_weight + delta_hidden_layer_weight
 
-    def fit(self, training_dataset, training_dataset_labels, threshold = 0.01):
+    def fit(self, training_dataset, training_dataset_labels, threshold = 0.1):
         """Faz o treinamento baseado nos dados de treinamentos e seus labels.
     
         Através da condição de parada do erro médio,

@@ -45,7 +45,7 @@ class Usage(object):
         self.output_length = output_length
         self.Mlp_instance = Mlp(alpha, activation_function, hidden_layer_length, input_length, output_length)
     
-    def data_training(self, name_of_file):
+    def data_training(self, name_of_file, csv_num_line):
         """Recebe uma String com o nome do arquivo para ser usado no treinamento.
     
         Na primeira parte declara matrizes para os dados e rótulos 
@@ -68,11 +68,15 @@ class Usage(object):
         # Cria os vetores para tamanho/atribuição de dados de entrada e dados de saída
         self.training_inputs = []
         self.labels = []
+        training_inputs_complete = []
 
         # Organiza os dados de entrada e saída
-        self.training_inputs, self.labels = self.data_organizer(name_of_file)
+        training_inputs_complete, self.labels = self.data_organizer(name_of_file)
 
         # Converte os vetores de entrada e saída para numpy array
+        for i in range(0, csv_num_line):
+            self.training_inputs.append(training_inputs_complete[i])
+
         self.training_inputs = np.array(self.training_inputs)
         self.labels = np.array(self.labels)
     
@@ -208,7 +212,7 @@ class Usage(object):
         # Cria relatório de classificação
         self.predicoes.write("\n\nRelatorio de classificacao:\n")
         target_names = ['A', 'B', 'C', 'D', 'E', 'J', 'K']
-        self.predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names)))
+        self.predicoes.write(str(classification_report(y_true, y_pred, target_names=target_names, zero_division=0)))
         self.predicoes.close()
 
     def predictionOutputFormater(self, results, test_data, name_of_file,test_labels):
@@ -271,8 +275,8 @@ class Usage(object):
         return final_answer
 
 if __name__ == '__main__':
-    u = Usage(0.2, sigmoid, 1, 63, 7)
-    u.data_training('caracteres-limpo.csv')
+    u = Usage(0.1, sigmoid, 15, 63, 7)
+    u.data_training('caracteres-limpo.csv', 14)
     print("Predicoes para caracteres-limpo.csv")
     u.predict('caracteres-limpo.csv')
     print("Predicoes para caracteres-ruido.csv")

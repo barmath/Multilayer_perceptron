@@ -1,68 +1,68 @@
-Data de criacao : Timestamp: 2021-07-08 23:56:08
+Data de criacao : Timestamp: 2021-07-08 23:52:52
 
 Labels testados : 21
-[[0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
+[[1. 0. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0.]
  [0. 0. 0. 1. 0. 0. 0.]
  [0. 0. 0. 0. 1. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 0. 0. 1.]
- [1. 0. 0. 1. 0. 0. 0.]
+ [1. 0. 0. 0. 0. 0. 0.]
  [0. 1. 0. 0. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0.]
  [0. 0. 0. 1. 0. 0. 0.]
- [0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
  [0. 0. 0. 0. 0. 0. 1.]
- [1. 0. 0. 1. 0. 0. 0.]
- [0. 1. 0. 0. 0. 0. 0.]
- [0. 0. 1. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 1.]
+ [0. 0. 0. 1. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 1. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 0. 0. 1.]]
+ [1. 0. 0. 0. 0. 0. 0.]]
 
 Resultados das predicoes para o dataset:
 
 Teste 1) 
   Visualizacao dos dados : 
 
-     **  *
+     **   
      *   
-     * **
+     *   
     * *  
-  *   *  
+    * *  
    ***** 
    *   * 
-   *  ** 
-  *******
+   *   * 
+  *** ***
 
- Resultados da predicao : label : A ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : A ,predicoes :  p0 : A , 
 
 Teste 2) 
   Visualizacao dos dados : 
 
-   * **** 
-   *   **
-   *   **
-   * *  *
-  * **** 
+   ****** 
    *    *
-   * *  *
-   *     
-    **** 
+   *    *
+   *    *
+   ***** 
+   *    *
+   *    *
+   *    *
+  ****** 
 
- Resultados da predicao : label : B ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : B ,predicoes :  p0 : B , 
 
 Teste 3) 
   Visualizacao dos dados : 
 
      *****
-   **   *
-  * **   
-  *   *  
-  *    * 
+   *    *
+  *      
+  *      
+  *      
   *      
   *      
    *    *
@@ -75,13 +75,13 @@ Teste 4)
 
    *****  
    *   * 
-   * * **
-   *  * *
    *    *
    *    *
-   *   **
-   *     
-   ****  
+   *    *
+   *    *
+   *    *
+   *   * 
+  *****  
 
  Resultados da predicao : label : D ,predicoes :  p0 : D , 
 
@@ -89,14 +89,14 @@ Teste 5)
   Visualizacao dos dados : 
 
    *******
-        *
-   *   * 
+   *    *
+   *     
    * *   
-   ***  *
+   ***   
    * *   
    *     
-  ** * **
-  ***** *
+   *    *
+  *******
 
  Resultados da predicao : label : E ,predicoes :  p0 : E , 
 
@@ -104,13 +104,13 @@ Teste 6)
   Visualizacao dos dados : 
 
       ****
-         
-    *  * 
+       * 
+       * 
+       * 
        * 
        * 
    *   * 
    *   * 
-   *   **
     ***  
 
  Resultados da predicao : label : J ,predicoes :  p0 : J , 
@@ -118,59 +118,59 @@ Teste 6)
 Teste 7) 
   Visualizacao dos dados : 
 
-   *    **
-   *  * *
-   *     
+   ***  **
+   *  *  
+   * *   
    **    
-   **   *
-   * * * 
-      *  
+   **    
+   * *   
+   *  *  
    *   * 
-  ***  * 
+  ***  **
 
  Resultados da predicao : label : K ,predicoes :  p0 : K , 
 
 Teste 8) 
   Visualizacao dos dados : 
 
-      *  *
-     *  *
+      *   
      *   
-    * * *
+     *   
+    * *  
     * *  
    *   * 
-    **** 
+   ***** 
    *   * 
-     * * 
+   *   * 
 
- Resultados da predicao : label : A ,predicoes :  p0 : A ,  p1 : D , 
+ Resultados da predicao : label : A ,predicoes :  p0 : A , 
 
 Teste 9) 
   Visualizacao dos dados : 
 
-   **** * 
-  * *   *
+   ****** 
   *     *
-   *    *
+  *     *
+  *     *
   ****** 
   *     *
-   *    *
   *     *
-    *****
+  *     *
+  ****** 
 
  Resultados da predicao : label : B ,predicoes :  p0 : B , 
 
 Teste 10) 
   Visualizacao dos dados : 
 
-   * ***  
+     ***  
    *   * 
-       **
-  * *  * 
-  *      
-  **  *  
   *     *
-   * * * 
+  *      
+  *      
+  *      
+  *     *
+   *   * 
     ***  
 
  Resultados da predicao : label : C ,predicoes :  p0 : C , 
@@ -181,10 +181,10 @@ Teste 11)
    *****  
   *    * 
   *     *
-  *    **
-  *   * *
-  *  *  *
-  **    *
+  *     *
+  *     *
+  *     *
+  *     *
   *    * 
   *****  
 
@@ -193,27 +193,27 @@ Teste 11)
 Teste 12) 
   Visualizacao dos dados : 
 
-   **  ** 
+   *******
   *      
-  *     *
   *      
-  *  **  
-  *     *
-  * * *  
   *      
-  *** ***
+  *****  
+  *      
+  *      
+  *      
+  *******
 
- Resultados da predicao : label : E ,predicoes :  p0 : B , 
+ Resultados da predicao : label : E ,predicoes :  p0 : E , 
 
 Teste 13) 
   Visualizacao dos dados : 
 
         * 
-    *  * 
-   *     
-   *   * 
-    *    
-      ** 
+       * 
+       * 
+       * 
+       * 
+       * 
    *   * 
    *   * 
     ***  
@@ -224,12 +224,12 @@ Teste 14)
   Visualizacao dos dados : 
 
    *    * 
-  ** **  
-  *  *** 
+  *   *  
+  *  *   
   * *    
   **     
-  * *  * 
-  *      
+  * *    
+  *  *   
   *   *  
   *    * 
 
@@ -239,130 +239,130 @@ Teste 15)
   Visualizacao dos dados : 
 
       *   
-     *  *
-    ***  
-   *  *  
+     *   
+    * *  
+    * *  
    *   * 
-    **** 
+   ***** 
   *     *
   *     *
-  **  ** 
+  **   **
 
- Resultados da predicao : label : A ,predicoes :  p0 : A ,  p1 : D , 
+ Resultados da predicao : label : A ,predicoes :  p0 : K , 
 
 Teste 16) 
   Visualizacao dos dados : 
 
-    * *** 
-        *
-   *  * *
+   ****** 
+   *    *
+   *    *
    ***** 
    *    *
-   *  * *
    *    *
    *    *
-  * **** 
+   *    *
+  ****** 
 
- Resultados da predicao : label : B ,predicoes :  p0 : B , 
+ Resultados da predicao : label : B ,predicoes :  p0 : D , 
 
 Teste 17) 
   Visualizacao dos dados : 
 
      *** *
    *   **
-  *   *  
-  *  *   
-  *      
-  **     
   *     *
-   *     
+  *      
+  *      
+  *      
+  *     *
+   *   * 
     ***  
 
- Resultados da predicao : label : C ,predicoes :  p0 : C ,  p1 : E , 
+ Resultados da predicao : label : C ,predicoes :  p0 : C , 
 
 Teste 18) 
   Visualizacao dos dados : 
 
-    **** *
+   *****  
    *   * 
-   *     
-   *     
-         
+   *    *
+   *    *
+   *    *
    *    *
    *    *
    *   * 
   *****  
 
- Resultados da predicao : label : D ,predicoes :  p0 : C , 
+ Resultados da predicao : label : D ,predicoes :  p0 : D , 
 
 Teste 19) 
   Visualizacao dos dados : 
 
-   * *****
-   **   *
+   *******
+   *    *
    *  *  
-    * *  
+   ****  
    *  *  
    *     
    *     
    *    *
   *******
 
- Resultados da predicao : label : E ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : E ,predicoes :  p0 : E , 
 
 Teste 20) 
   Visualizacao dos dados : 
 
        ***
-  *    * 
-    ** * 
-    *  * 
-   *     
+       * 
+       * 
+       * 
+       * 
        * 
        * 
    *   * 
-     **  
+    ***  
 
  Resultados da predicao : label : J ,predicoes :  p0 : J , 
 
 Teste 21) 
   Visualizacao dos dados : 
 
-   **    *
-       * 
-   * **  
-  ** *   
-  ***    
-   ***   
+   ***  **
+   *   * 
+   *  *  
+   * *   
+   **    
+   * *   
    *  *  
    *   * 
   ***  **
 
- Resultados da predicao : label : K ,predicoes :  p0 : K , 
+ Resultados da predicao : label : K ,predicoes :  p0 : A , 
 
  
 
 Matriz de confusao:
-[[3 0 0 0 0 0 0]
- [1 2 0 0 0 0 0]
+[[2 0 0 0 0 0 1]
+ [0 2 0 1 0 0 0]
  [0 0 3 0 0 0 0]
- [0 0 1 2 0 0 0]
- [1 1 0 0 1 0 0]
+ [0 0 0 3 0 0 0]
+ [0 0 0 0 3 0 0]
  [0 0 0 0 0 3 0]
- [0 0 0 0 0 0 3]]
+ [1 0 0 0 0 0 2]]
 
 Relatorio de classificacao:
               precision    recall  f1-score   support
 
-           A       1.00      0.67      0.80         3
-           B       0.67      0.67      0.67         3
-           C       0.75      1.00      0.86         3
-           D       0.50      0.67      0.57         3
-           E       0.50      0.33      0.40         3
+           A       0.67      0.67      0.67         3
+           B       1.00      0.67      0.80         3
+           C       1.00      1.00      1.00         3
+           D       0.75      1.00      0.86         3
+           E       1.00      1.00      1.00         3
            J       1.00      1.00      1.00         3
-           K       1.00      1.00      1.00         3
+           K       0.67      0.67      0.67         3
 
-   micro avg       0.76      0.76      0.76        21
-   macro avg       0.77      0.76      0.76        21
-weighted avg       0.77      0.76      0.76        21
- samples avg       0.69      0.76      0.71        21
+   micro avg       0.86      0.86      0.86        21
+   macro avg       0.87      0.86      0.86        21
+weighted avg       0.87      0.86      0.86        21
+ samples avg       0.86      0.86      0.86        21

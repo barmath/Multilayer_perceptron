@@ -1,27 +1,27 @@
-Data de criacao : Timestamp: 2021-07-08 23:56:08
+Data de criacao : Timestamp: 2021-07-08 23:54:50
 
 Labels testados : 21
-[[0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 1. 0. 0. 0. 0.]
- [0. 0. 0. 1. 0. 0. 0.]
- [0. 0. 0. 0. 1. 0. 0.]
- [0. 0. 0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 0. 0. 1.]
- [1. 0. 0. 1. 0. 0. 0.]
+[[0. 1. 0. 0. 0. 0. 0.]
  [0. 1. 0. 0. 0. 0. 0.]
  [0. 0. 1. 0. 0. 0. 0.]
- [0. 0. 0. 1. 0. 0. 0.]
  [0. 1. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 0. 0. 1.]
- [1. 0. 0. 1. 0. 0. 0.]
- [0. 1. 0. 0. 0. 0. 0.]
- [0. 0. 1. 0. 1. 0. 0.]
- [0. 0. 1. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 0. 0. 1.]]
+ [1. 0. 0. 0. 0. 0. 1.]
+ [0. 1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0.]
+ [1. 0. 0. 0. 0. 0. 1.]
+ [0. 1. 0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1. 0. 1.]]
 
 Resultados das predicoes para o dataset:
 
@@ -38,7 +38,7 @@ Teste 1)
    *  ** 
   *******
 
- Resultados da predicao : label : A ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : A ,predicoes :  p0 : B , 
 
 Teste 2) 
   Visualizacao dos dados : 
@@ -53,7 +53,7 @@ Teste 2)
    *     
     **** 
 
- Resultados da predicao : label : B ,predicoes : Nao ha predicoes
+ Resultados da predicao : label : B ,predicoes :  p0 : B , 
 
 Teste 3) 
   Visualizacao dos dados : 
@@ -83,7 +83,7 @@ Teste 4)
    *     
    ****  
 
- Resultados da predicao : label : D ,predicoes :  p0 : D , 
+ Resultados da predicao : label : D ,predicoes :  p0 : B , 
 
 Teste 5) 
   Visualizacao dos dados : 
@@ -98,7 +98,7 @@ Teste 5)
   ** * **
   ***** *
 
- Resultados da predicao : label : E ,predicoes :  p0 : E , 
+ Resultados da predicao : label : E ,predicoes : Nao ha predicoes
 
 Teste 6) 
   Visualizacao dos dados : 
@@ -128,7 +128,7 @@ Teste 7)
    *   * 
   ***  * 
 
- Resultados da predicao : label : K ,predicoes :  p0 : K , 
+ Resultados da predicao : label : K ,predicoes :  p0 : A ,  p1 : K , 
 
 Teste 8) 
   Visualizacao dos dados : 
@@ -143,7 +143,7 @@ Teste 8)
    *   * 
      * * 
 
- Resultados da predicao : label : A ,predicoes :  p0 : A ,  p1 : D , 
+ Resultados da predicao : label : A ,predicoes :  p0 : B , 
 
 Teste 9) 
   Visualizacao dos dados : 
@@ -188,7 +188,7 @@ Teste 11)
   *    * 
   *****  
 
- Resultados da predicao : label : D ,predicoes :  p0 : D , 
+ Resultados da predicao : label : D ,predicoes :  p0 : B , 
 
 Teste 12) 
   Visualizacao dos dados : 
@@ -203,7 +203,7 @@ Teste 12)
   *      
   *** ***
 
- Resultados da predicao : label : E ,predicoes :  p0 : B , 
+ Resultados da predicao : label : E ,predicoes : Nao ha predicoes
 
 Teste 13) 
   Visualizacao dos dados : 
@@ -233,7 +233,7 @@ Teste 14)
   *   *  
   *    * 
 
- Resultados da predicao : label : K ,predicoes :  p0 : K , 
+ Resultados da predicao : label : K ,predicoes :  p0 : A ,  p1 : K , 
 
 Teste 15) 
   Visualizacao dos dados : 
@@ -248,7 +248,7 @@ Teste 15)
   *     *
   **  ** 
 
- Resultados da predicao : label : A ,predicoes :  p0 : A ,  p1 : D , 
+ Resultados da predicao : label : A ,predicoes :  p0 : B , 
 
 Teste 16) 
   Visualizacao dos dados : 
@@ -278,7 +278,7 @@ Teste 17)
    *     
     ***  
 
- Resultados da predicao : label : C ,predicoes :  p0 : C ,  p1 : E , 
+ Resultados da predicao : label : C ,predicoes :  p0 : C , 
 
 Teste 18) 
   Visualizacao dos dados : 
@@ -293,7 +293,7 @@ Teste 18)
    *   * 
   *****  
 
- Resultados da predicao : label : D ,predicoes :  p0 : C , 
+ Resultados da predicao : label : D ,predicoes :  p0 : D , 
 
 Teste 19) 
   Visualizacao dos dados : 
@@ -338,31 +338,31 @@ Teste 21)
    *   * 
   ***  **
 
- Resultados da predicao : label : K ,predicoes :  p0 : K , 
+ Resultados da predicao : label : K ,predicoes :  p0 : E ,  p1 : K , 
 
  
 
 Matriz de confusao:
-[[3 0 0 0 0 0 0]
- [1 2 0 0 0 0 0]
+[[0 3 0 0 0 0 0]
+ [0 3 0 0 0 0 0]
  [0 0 3 0 0 0 0]
- [0 0 1 2 0 0 0]
- [1 1 0 0 1 0 0]
+ [0 2 0 1 0 0 0]
+ [3 0 0 0 0 0 0]
  [0 0 0 0 0 3 0]
- [0 0 0 0 0 0 3]]
+ [2 0 0 0 1 0 0]]
 
 Relatorio de classificacao:
               precision    recall  f1-score   support
 
-           A       1.00      0.67      0.80         3
-           B       0.67      0.67      0.67         3
-           C       0.75      1.00      0.86         3
-           D       0.50      0.67      0.57         3
-           E       0.50      0.33      0.40         3
+           A       0.00      0.00      0.00         3
+           B       0.38      1.00      0.55         3
+           C       1.00      1.00      1.00         3
+           D       1.00      0.33      0.50         3
+           E       0.00      0.00      0.00         3
            J       1.00      1.00      1.00         3
            K       1.00      1.00      1.00         3
 
-   micro avg       0.76      0.76      0.76        21
-   macro avg       0.77      0.76      0.76        21
-weighted avg       0.77      0.76      0.76        21
- samples avg       0.69      0.76      0.71        21
+   micro avg       0.62      0.62      0.62        21
+   macro avg       0.62      0.62      0.58        21
+weighted avg       0.62      0.62      0.58        21
+ samples avg       0.55      0.62      0.57        21
